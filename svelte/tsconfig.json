@@ -1,0 +1,10 @@
+{
+    "extends": "@tsconfig/svelte/tsconfig.json",
+
+    "compilerOptions": {
+        "types": ["node", "svelte", "jest"],
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "name": "@irispixel/intersector",
+    "version": "0.1.0",
+    "entry": "src/index.ts",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.mjs",  
+    "types": "dist/index.d.ts",
+    "repository": "git@github.com:irispixel/irispixel-svelte-ui.git",
+    "author": "Karthik K <karthiknetworklink@gmail.com>",
+    "license": "SEE LICENSE IN license",
+    "private": false,
+    "peerDependencies": {
+    },
+    "dependencies": {
+      "@babel/runtime": "7.16.7"
+    },    
+    "devDependencies": { 
+    },
+    "scripts": {
+      "clean": "rimraf dist && rimraf types" ,
+      "eslint": "eslint src --ext .ts",
+      "lint": "yarn eslint",
+      "build": "rollup -c ../rollup.lib.config.js",
+      "prod": "NODE_ENV=production yarn build",
+      "prepublishOnly": "yarn clean && yarn prod",
+      "test": "jest src",
+      "build:test":  "yarn build && yarn test"
+
+    },
+    "files": [
+      "dist",
+      "src",
+      "types"
+    ]  
+  }
+  

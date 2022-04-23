@@ -1,0 +1,39 @@
+{
+    "name": "@irispixel/svelte.darkthemetoggle",
+    "version": "0.1.0",
+    "entry": "src/index.js",
+    "svelte": "src/index.js",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.mjs",  
+    "types": "dist/index.d.ts",
+    "repository": "git@github.com:irispixel/irispixel-svelte-ui.git",
+    "author": "Karthik K <karthiknetworklink@gmail.com>",
+    "license": "SEE LICENSE IN license",
+    "private": false,
+    "peerDependencies": {
+    },
+    "dependencies": {
+    },    
+    "devDependencies": { 
+    },
+    "scripts": {
+      "clean": "rimraf dist && rimraf types",
+      "eslint": "eslint src --ext .ts,.js,.svelte",
+      "svelte:lint": "svelte-check",
+      "lint": "yarn eslint && yarn svelte:lint",
+      "tsc:build": "tsc src/index.js --declaration --emitDeclarationOnly --allowJS true --outDir types",
+      "rollup:build": "rollup -c ../../rollup.config.js",
+      "build": "yarn rollup:build",
+      "prod": "NODE_ENV=production yarn build",
+      "prepublishOnly": "yarn clean && yarn prod",
+      "test": "jest src",
+      "build:test":  "yarn build && yarn test"
+
+    },
+    "files": [
+      "dist",
+      "src",
+      "types"
+    ]
+  }
+  

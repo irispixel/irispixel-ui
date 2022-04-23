@@ -1,0 +1,19 @@
+{
+    "extends": "../tsconfig.json",
+
+    "compilerOptions": {
+        "rootDir": "./..",
+        "lib": ["DOM", "ES2017", "WebWorker"],
+        "resolveJsonModule": true,
+    },
+    "include": [
+        "..",
+        "./../packages/**/*",
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules/*", 
+        "public/*",
+        "./../packages/**/*.test.ts"
+    ],
+}

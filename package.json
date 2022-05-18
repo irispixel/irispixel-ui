@@ -1,48 +1,44 @@
 {
-    "name": "@irispixel/ui",
-    "version": "1.0.0",
-    "entry": "src/index.js",
-    "svelte": "src/index.js",
-    "main": "dist/index.cjs.js",
-    "module": "dist/index.esm.mjs",  
-    "types": "types/index.d.ts",
-    "repository": "git@github.com:irispixel/irispixel-ui.git",
-    "author": "Karthik K <karthiknetworklink@gmail.com>",
-    "license": "SEE LICENSE IN license",
-    "private": true,
-    "workspaces": {
-      "packages": [
-        "common",
-        "svelte"
-      ],
-      "nohoist": [
-        "**"
-      ]
-    },    
-    "browserslist": [
-      "> 1%",
-      "last 2 versions"
+  "name": "@irispixel/ui",
+  "version": "1.0.0",
+  "entry": "src/index.js",
+  "svelte": "src/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
+  "types": "types/index.d.ts",
+  "repository": "git@github.com:irispixel/irispixel-ui.git",
+  "author": "Karthik K <karthiknetworklink@gmail.com>",
+  "license": "SEE LICENSE IN license",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "common",
+      "svelte"
     ],
-    "engines": {
-      "node": ">= 12.0.0",
-      "npm": ">= 3.0.0",
-      "yarn": "^1.22.0"
-    },    
-    "peerDependencies": {
-    },
-    "dependencies": {
-    },    
-    "devDependencies": { 
-    },
-    "scripts": {
-      "clean": "yarn workspaces run clean",
-      "eslint":  "yarn workspaces run eslint",
-      "svelte:lint": "yarn workspaces run svelte:lint",
-      "lint": "yarn workspaces run lint",
-      "build": "yarn workspaces run build",
-      "test": "yarn workspaces run test",
-      "build:test":  "yarn workspaces run build:test",
-      "prod": "NODE_ENV=production yarn workspaces run build"
-    }
+    "nohoist": [
+      "**"
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "engines": {
+    "node": ">= 12.0.0",
+    "npm": ">= 3.0.0",
+    "yarn": "^1.22.0"
+  },
+  "peerDependencies": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "clean": "yarn workspaces run clean",
+    "eslint": "yarn workspaces run eslint",
+    "svelte:lint": "yarn workspaces run svelte:lint",
+    "lint": "yarn workspaces run lint",
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test",
+    "build:test": "yarn workspaces run build:test",
+    "prod": "NODE_ENV=production yarn workspaces run build"
+  }
 }
-  

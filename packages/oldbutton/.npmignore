@@ -1,0 +1,5 @@
+jest.config.jest
+tsconfig.json
+src/*.ts
+src/*.svelte
+

@@ -1,4 +1,11 @@
+.DS_Store
 node_modules
+build
+.svelte-kit
+package
+.env
+.env.*
+!.env.example
 dist
 LICENSE
 # *.d.ts
@@ -10,3 +17,7 @@ build
 yarn-error.log
 yarn.lock
 irispixel.min.css
+.yarn
+/old
+*.css
+*.css.map

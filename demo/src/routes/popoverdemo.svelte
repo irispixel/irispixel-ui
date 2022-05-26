@@ -1,9 +1,13 @@
 <script lang="ts">
 	import Box from '../../../packages/box/src/lib/Box.svelte';
 	import Button from '../../../packages/button/src/lib/Button.svelte';
-	import Popover from '../../../packages/popover/src/lib/Popover.svelte';
 	import Layout from '$lib/layout.svelte';
 	import { VAlign, HAlign, TriggerEvent, CloseOnLeave } from '../../../packages/popover';
+	import { onMount } from 'svelte';
+	import Popover from '../../../packages/popover/src/lib/Popover.svelte';
+
+	onMount( async() => {
+	});
 </script>
 
 <Layout>

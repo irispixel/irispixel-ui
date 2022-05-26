@@ -2,7 +2,7 @@
   "name": "@irispixel/svelte.piechart",
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": "git@github.com:irispixel/irispixel-ui.git",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "main": "package/index.cjs",
   "module": "package/index.esm.mjs",
   "types": "package/index.d.ts",
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@irispixel/common.charts": "^0.1.3",
-    "@irispixel/svelte.canvas": "^0.1.8",
-    "@irispixel/svelte.portal": "^0.1.8"
+    "@irispixel/svelte.canvas": "^0.1.10",
+    "@irispixel/svelte.portal": "^0.1.10"
   },
   "type": "module",
   "publishConfig": {

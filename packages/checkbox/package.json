@@ -2,7 +2,7 @@
   "name": "@irispixel/svelte.checkbox",
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": "git@github.com:irispixel/irispixel-ui.git",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "main": "package/index.cjs",
   "module": "package/index.esm.mjs",
   "types": "package/index.d.ts",

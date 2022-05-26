@@ -31,14 +31,13 @@
 
 </script>
 <style lang="scss">
-.l-dropdown-input-root {
+.ip-dropdown-input-root {
   cursor: pointer;
-  border: 1px solid red;
 }
-.l-dropdown-list-root {
+.ip-dropdown-list-root {
   display: inline-block;
 }
-.l-dropdown-list-selected {
+.ip-dropdown-list-selected {
   width: 80px;
 }
 </style>

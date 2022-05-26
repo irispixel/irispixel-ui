@@ -1,0 +1,83 @@
+// Copyright © 2022 IrisPixel. All rights reserved.
+//
+// This is a commercial product and requires a paid license for possession or use.
+//
+// To acquire a license you can purchase one here at - https://irispixel.com/products .
+
+@use 'sass:color';
+
+@function text_color($color-name) {
+  @if $color-name == 'primary' {
+    @return hsl(
+      var(--ip-primary-text-h, 251),
+      var(--ip-primary-text-s, 86%),
+      var(--ip-primary-text-l, 100%)
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsl(
+      var(--ip-primary-text-h, 251),
+      var(--ip-primary-text-s, 86%),
+      var(--ip-primary-text-l, 100%)
+    );
+  } @else {
+    @return hsl(var(--ip-primary-h, 251), var(--ip-primary-s, 86%), var(--ip-primary-l, 60%));
+  }
+}
+
+@function theme_color($color-name) {
+  @if $color-name == 'primary' {
+    @return hsl(var(--ip-primary-h, 251), var(--ip-primary-s, 86%), var(--ip-primary-l, 60%));
+  } @else if ($color-name == 'secondary') {
+    @return hsl(
+      var(--ip-secondary-h, calc(var(--ip-primary-h, 251) + 180)),
+      var(--ip-secondary-s, var(--ip-primary-s, 86%)),
+      var(--ip-secondary-l, var(--ip-primary-l, 60%))
+    );
+  } @else {
+    @return hsl(var(--ip-primary-h, 251), var(--ip-primary-s, 86%), var(--ip-primary-l, 60%));
+  }
+}
+
+@function darken_theme_color($color-name) {
+  @if $color-name == 'primary' {
+    @return hsl(
+      var(--ip-primary-h, 251),
+      var(--ip-primary-s, 86%),
+      calc(var(--ip-primary-l, 80%) - var(--ip-primary-darken, 20%))
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsl(
+      calc(var(--ip-secondary-h, 251) + 180),
+      var(--ip-secondary-s, 90%),
+      calc(var(--ip-secondary-l, 63%) - var(--ip-secondary-darken, 20%))
+    );
+  } @else {
+    @return hsl(
+      var(--ip-primary-h, 251),
+      var(--ip-primary-s, 86%),
+      calc(var(--ip-primary-l, 60%) - var(--ip-primary-darken, 20%))
+    );
+  }
+}
+
+@function lighten_theme_color($color-name) {
+  @if $color-name == 'primary' {
+    @return hsl(
+      var(--ip-#{$color-name}-h, 251),
+      var(--ip-#{$color-name}-s, 86%),
+      calc(var(--ip-#{$color-name}-l, 60%) + 5%)
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsl(
+      var(--ip-#{$color-name}-h, 346),
+      var(--ip-#{$color-name}-s, 90%),
+      calc(var(--ip-#{$color-name}-l, 63%) + 5%)
+    );
+  } @else {
+    @return hsl(
+      var(--ip-#{$color-name}-h, 251),
+      var(--ip-#{$color-name}-s, 86%),
+      calc(var(--ip-#{$color-name}-l, 32%) + 5%)
+    );
+  }
+}

@@ -17,8 +17,8 @@
     "@irispixel/common.intersector": "^0.1.2"
   },
   "devDependencies": {
-    "@sveltejs/adapter-static": "next",
-    "@sveltejs/kit": "^1.0.0-next.344",
+    "@sveltejs/adapter-static": "^1.0.0-next.32",
+    "@sveltejs/kit": "^1.0.0-next.345",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
     "eslint": "^8.16.0",

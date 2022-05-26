@@ -6,7 +6,7 @@
   "module": "package/index.esm.mjs",
   "types": "package/index.d.ts",
   "author": "IrisPixel",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "scripts": {
     "clean": "rimraf package",
     "rollup": "rollup -c ./../../rollup.config.js",

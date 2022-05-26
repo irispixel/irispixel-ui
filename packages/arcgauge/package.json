@@ -2,7 +2,7 @@
   "name": "@irispixel/svelte.arcgauge",
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": "git@github.com:irispixel/irispixel-ui.git",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "main": "package/index.cjs",
   "module": "package/index.esm.mjs",
   "types": "package/index.d.ts",
@@ -22,8 +22,8 @@
     "pub": "yarn prepare && cd package && npm publish --tolerate-republish"
   },
   "dependencies": {
-    "@irispixel/svelte.canvas": "^0.1.8",
-    "@irispixel/svelte.portal": "^0.1.8"
+    "@irispixel/svelte.canvas": "^0.1.10",
+    "@irispixel/svelte.portal": "^0.1.10"
   },
   "type": "module",
   "publishConfig": {

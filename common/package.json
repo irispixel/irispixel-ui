@@ -1,0 +1,75 @@
+{
+  "name": "@irispixel/common",
+  "version": "0.1.1",
+  "entry": "src/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
+  "types": "types/index.d.ts",
+  "repository": "git@github.com:irispixel/irispixel-ui.git",
+  "author": "IrisPixel",
+  "private": true,
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**"
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "engines": {
+    "node": ">= 12.0.0",
+    "npm": ">= 3.0.0",
+    "yarn": "^1.22.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.18.5",
+    "@babel/plugin-transform-runtime": "7.18.5",
+    "@babel/preset-env": "7.18.2",
+    "@babel/preset-typescript": "7.17.12",
+    "@rollup/plugin-babel": "5.3.1",
+    "@rollup/plugin-commonjs": "22.0.0",
+    "@rollup/plugin-node-resolve": "13.3.0",
+    "@rollup/plugin-typescript": "8.3.3",
+    "@testing-library/jest-dom": "5.16.4",
+    "@types/jest": "28.1.2",
+    "@types/node": "18.0.0",
+    "@typescript-eslint/eslint-plugin": "5.28.0",
+    "@typescript-eslint/parser": "5.28.0",
+    "babel-jest": "28.1.1",
+    "eslint": "8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "26.5.3",
+    "eslint-plugin-jsdoc": "39.3.3",
+    "jest": "28.1.1",
+    "jest-environment-jsdom": "28.1.1",
+    "prettier": "^2.7.1",
+    "rimraf": "3.0.2",
+    "rollup": "2.75.7",
+    "rollup-plugin-analyzer": "4.0.0",
+    "rollup-plugin-bundle-size": "1.0.3",
+    "rollup-plugin-css-only": "3.1.0",
+    "rollup-plugin-filesize": "9.1.2",
+    "rollup-plugin-node-externals": "4.0.0",
+    "rollup-plugin-peer-deps-external": "2.2.4",
+    "rollup-plugin-terser": "7.0.2",
+    "ts-jest": "28.0.5",
+    "tslib": "2.4.0",
+    "typescript": "4.7.4"
+  },
+  "scripts": {
+    "clean": "echo cleaning common && yarn workspaces foreach run clean",
+    "eslint": "echo eslinting common && yarn workspaces foreach run eslint",
+    "lint": "echo linting common libs && yarn workspaces foreach run lint",
+    "build": "echo building common libs && yarn workspaces foreach run build",
+    "test": "echo testing common lib && yarn workspaces foreach run test",
+    "format": "yarn workspaces foreach run format",
+    "next": "yarn workspaces foreach run next",
+    "pub": "yarn workspaces foreach run pub"
+  },
+  "files": []
+}

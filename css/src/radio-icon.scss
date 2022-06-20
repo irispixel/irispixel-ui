@@ -1,0 +1,52 @@
+// Copyright (c) 2022 IrisPixel
+// 
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+
+@import './colors.scss';
+@import './checkbox-icon-common.scss';
+
+.default-radio-icon {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(var(--ip-checkbox-dimension, $size_sm) * 0.9rem);
+  width: calc(var(--ip-checkbox-dimension, $size_sm) * 0.9rem);
+  border-radius: 50%;
+}
+
+.primary-radio-icon {
+  background: theme_color('primary');
+}
+
+.secondary-radio-icon {
+  background: theme_color('secondary');
+}
+
+.radio-icon-next {
+  content: '';
+  position: absolute;
+  box-sizing: border-box;
+
+  top: calc(var(--ip-checkbox-dimension, $size_sm) * 0.15rem);
+  left: calc(var(--ip-checkbox-dimension, $size_sm) * 0.15rem);
+  width: calc(var(--ip-checkbox-dimension, $size_sm) * 0.6rem);
+  height: calc(var(--ip-checkbox-dimension, $size_sm) * 0.6rem);
+  border-radius: 50%;
+}
+
+// Colors
+.primary-checkbox {
+  border: 1px solid theme_color('primary');
+}
+
+.secondary-checkbox {
+  border: 1px solid theme_color('secondary');
+}
+
+
+.unchecked-color {
+  background-color: #eee;
+}

@@ -1,0 +1,22 @@
+// Copyright (c) 2022 IrisPixel
+// 
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+
+.default-button {
+  box-shadow: none;
+  -webkit-appearance: none;
+  outline: none;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.block-button {
+  display: inline-block;
+}
+
+.flex-button {
+  display: inline-flex;
+  align-items: center;
+}

@@ -1,3 +1,0 @@
-# Popover
-
-Svelte popover component

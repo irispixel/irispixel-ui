@@ -1,0 +1,18 @@
+// Copyright (c) 2022 IrisPixel
+// 
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+
+
+.default-input {
+  border-width: 1px;
+  border-style: solid;
+  background-color: inherit;
+  color: inherit;
+  background: none;
+  box-sizing: border-box;
+  opacity: 0.8;
+  outline: none;
+  transition: background-color 0.3s ease;
+}

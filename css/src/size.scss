@@ -1,0 +1,49 @@
+// Copyright (c) 2022 IrisPixel
+// 
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+
+
+
+.space {
+    min-width: 1rem;
+}
+  
+/// Size css
+.xs {
+    font-size: 0.25rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.md {
+    font-size: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.lg {
+    font-size: 2rem;
+    padding: 2rem 2rem 2rem 2rem;
+}
+
+.xl {
+    font-size: 4rem;
+    padding: 3rem 3rem 3rem 3rem;
+}
+  
+// Radius
+.radius-xs {
+    border-radius: 0.25rem;
+}
+
+.radius-sm {
+    border-radius: 0.5rem;
+}
+
+.radius-lg {
+    border-radius: 1rem;
+}
+
+.radius-xl {
+    border-radius: 2rem;
+}

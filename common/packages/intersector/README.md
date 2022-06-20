@@ -1,0 +1,3 @@
+# Intersector
+
+API using DOMIntersector

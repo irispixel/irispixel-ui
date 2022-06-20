@@ -1,0 +1,116 @@
+// Copyright (c) 2022 IrisPixel
+// 
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+
+
+@import './colors.scss';
+
+$inner-ratio: 0.8;
+$border-radius: 2.25; //rem
+
+// Sizes of toggle
+.xs-toggle {
+  --ip-toggle-border-radius: 1; //rem
+}
+.sm-toggle {
+  --ip-toggle-border-radius: 2; //rem
+}
+.md-toggle {
+  --ip-toggle-border-radius: 3; //rem
+}
+.lg-toggle {
+  --ip-toggle-border-radius: 4; //rem
+}
+.xl-toggle {
+  --ip-toggle-border-radius: 5; //rem
+}
+
+// Slider Root
+.slider-root {
+  display: inline-block;
+  position: relative;
+  width: calc(var(--ip-toggle-border-radius, $border-radius) * 2rem);
+  height: calc(var(--ip-toggle-border-radius, $border-radius) * 1rem);
+}
+
+// Variants
+.ios-toggle {
+  border-radius: calc(var(--ip-toggle-border-radius, $border-radius) * 1rem);
+}
+
+.ios-toggle-icon {
+  border-radius: 50%;
+}
+
+// android toggle
+.android-toggle {
+  border-radius: calc(var(--ip-toggle-border-radius, $border-radius) * 1rem);
+}
+
+.android-toggle-icon {
+  border-radius: 50%;
+}
+
+// windows toggle
+.windows {
+}
+
+.windows-toggle-icon {
+}
+
+// slider itself
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+.checked-primary {
+  background-color: theme_color('primary');
+}
+
+.checked-secondary {
+  background-color: theme_color('secondary');
+}
+// checked color of a slider
+.checked {
+  background-color: #2196f3;
+}
+.unchecked {
+  background-color: #ccc;
+}
+
+// icon itself
+.icon {
+  position: absolute;
+  content: '';
+  height: calc(
+    var(--ip-toggle-border-radius, $border-radius) * var(--ip-toggle-inner-ratio, $inner-ratio) *
+      1rem
+  );
+  width: calc(
+    var(--ip-toggle-border-radius, $border-radius) * var(--ip-toggle-inner-ratio, $inner-ratio) *
+      1rem
+  );
+  left: calc(
+    (1 - var(--ip-toggle-inner-ratio, $inner-ratio)) *
+      var(--ip-toggle-border-radius, $border-radius) * 0.5rem
+  );
+  bottom: calc(
+    (1 - var(--ip-toggle-inner-ratio, $inner-ratio)) *
+      var(--ip-toggle-border-radius, $border-radius) * 0.5rem
+  );
+  transition: 0.4s;
+  background-color: white;
+}
+
+.checked-icon {
+  transform: translateX(calc(var(--ip-toggle-border-radius, $border-radius) * 1rem));
+}
+.unchecked-icon {
+  background-color: white;
+}

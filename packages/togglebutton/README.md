@@ -1,3 +1,0 @@
-# ToggleButton
-
-ToggleButton component ofSvelte

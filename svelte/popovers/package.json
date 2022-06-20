@@ -1,0 +1,69 @@
+{
+    "name": "@irispixel/svelte-popovers",
+    "version": "0.1.6",
+    "entry": "src/index.js",
+    "svelte": "src/index.js",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.mjs",
+    "types": "types/index.d.ts",
+    "repository": "git@github.com:irispixel/irispixel-ui.git",
+    "author": "IrisPixel",
+    "license": "MIT",
+    "private": true,
+    "workspaces": {
+        "packages": [
+            "modal",
+            "popover",
+            "togglebutton"
+        ]
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ],
+    "engines": {
+        "node": ">= 14.0.0",
+        "npm": ">= 8.0.0",
+        "yarn": "^3.0.0"
+    },
+    "devDependencies": {
+        "@sveltejs/adapter-static": "^1.0.0-next.34",
+        "@sveltejs/kit": "^1.0.0-next.350",
+        "@testing-library/jest-dom": "^5.16.4",
+        "@testing-library/svelte": "3.1.3",
+        "@types/jest": "^28.1.2",
+        "@typescript-eslint/eslint-plugin": "^5.28.0",
+        "@typescript-eslint/parser": "^5.28.0",
+        "eslint": "^8.18.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-svelte3": "^4.0.0",
+        "jest": "^28.1.1",
+        "jest-environment-jsdom": "^28.1.1",
+        "prettier": "^2.7.1",
+        "prettier-plugin-svelte": "^2.7.0",
+        "sass": "^1.52.3",
+        "svelte": "^3.48.0",
+        "svelte-check": "^2.7.2",
+        "svelte-jester": "^2.3.2",
+        "svelte-preprocess": "^4.10.7",
+        "svelte2tsx": "^0.5.10",
+        "ts-jest": "^28.0.5",
+        "tslib": "^2.4.0",
+        "typescript": "~4.7.4"
+    },
+    "scripts": {
+        "clean": "yarn workspaces foreach run clean",
+        "eslint": "yarn workspaces foreach run eslint",
+        "lint": "yarn workspaces foreach run lint",
+        "check": "yarn workspaces foreach run check",
+        "build": "yarn workspaces foreach run build",
+        "install": "yarn workspaces foreach run install",
+        "test": "yarn workspaces foreach run test",
+        "format": "yarn workspaces foreach run format",
+        "build:test": "yarn workspaces foreach run build:test",
+        "prod": "NODE_ENV=production yarn workspaces foreach run build",
+        "next": "yarn workspaces foreach run next",
+        "pub": "yarn workspaces foreach run pub"
+    },
+    "files": []
+}

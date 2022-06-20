@@ -1,3 +1,0 @@
-# DropdownMenu
-
-DropdownMenu svelte component

@@ -1,0 +1,55 @@
+// Copyright (c) 2022 IrisPixel
+// 
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+
+
+@import './colors.scss';
+@import './shadow.scss';
+
+$size_sm: 2; // rem
+
+.checkbox-text {
+  position: absolute;
+  // padding-left: calc(var(--ip-checkbox-dimension, $size_sm) * 0.5rem);
+}
+
+.ip-checkbox-icon-root {
+  display: inline-block;
+  position: relative;
+  width: calc(var(--ip-checkbox-dimension, $size_sm) * 1rem);
+  height: calc(var(--ip-checkbox-dimension, $size_sm) * 1rem);
+}
+
+// Sizes
+.sz-xs {
+  --ip-checkbox-dimension: 1.5; // rem
+}
+
+.sz-sm {
+  --ip-checkbox-dimension: 2; // rem
+}
+
+.sz-md {
+  --ip-checkbox-dimension: 3; // rem
+}
+
+.sz-lg {
+  --ip-checkbox-dimension: 4; // rem
+}
+
+.sz-xl {
+  --ip-checkbox-dimension: 5; // rem
+}
+
+
+.hover-checkbox-primary:hover,
+.hover-checkbox-primary:focus {
+  box-shadow: shadow('primary');
+}
+
+.hover-checkbox-secondary:hover,
+.hover-checkbox-secondary:focus {
+  box-shadow: shadow('secondary');
+}

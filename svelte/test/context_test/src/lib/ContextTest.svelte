@@ -1,0 +1,27 @@
+<!--
+ Copyright (c) 2022 IrisPixel
+ 
+ This software is released under the MIT License.
+ https://opensource.org/licenses/MIT
+-->
+<script lang="ts" context="module">
+  export type KeyValue = {
+    key: any;
+    value: any;
+  };
+</script>
+
+<script lang="ts">
+  import { setContext } from 'svelte';
+  import type { SvelteComponent } from 'svelte';
+  import type { Writable } from 'svelte/store';
+
+  export let component: Writable<typeof SvelteComponent>;
+  export let keyValues: KeyValue[] = [];
+
+  keyValues.forEach((keyvalue: KeyValue) => {
+    setContext(keyvalue.key, keyvalue.value);
+  });
+</script>
+
+<svelte:component this={component} />

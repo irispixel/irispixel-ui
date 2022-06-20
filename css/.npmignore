@@ -1,0 +1,7 @@
+node_modules
+.yarn
+src/*.ts
+tsconfig.json
+favicon.svg
+index.html
+yarn.lock

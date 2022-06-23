@@ -12,7 +12,7 @@ import Input from '@svelte.core/input/src/lib/Input.svelte';
 import { ActivityIcon, AirplayIcon, LogInIcon, LogOutIcon, MenuIcon } from 'svelte-feathers';
 
 const colors = ['primary', 'secondary'];
-const sizes = ['sm', 'md', 'lg', 'xl'];
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 const variants = ['flat'];
 let value = 'universe';
 </script>

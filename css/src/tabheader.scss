@@ -1,19 +1,17 @@
 // Copyright (c) 2022 IrisPixel
-// 
+//
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-
-
 .ip-tabheader-root {
-    border: 1px solid red;
-    border-bottom-width: 0;
-    margin: 0 10px 0 0;
-    padding: 2px 4px;
-    border-color: red;
-    border-style: solid;
+  border: 1px solid red;
+  border-bottom-width: 0;
+  margin: 0 10px 0 0;
+  padding: 2px 4px;
+  border-color: red;
+  border-style: solid;
 }
 .selected {
-    border-bottom: 2px solid teal;
-    color: #333;
+  border-bottom: 2px solid teal;
+  color: #333;
 }

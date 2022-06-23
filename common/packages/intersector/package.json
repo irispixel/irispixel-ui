@@ -1,6 +1,6 @@
 {
   "name": "@irispixel/common-intersector",
-  "version": "0.2.0",
+  "version": "0.2.5",
   "entry": "src/index.ts",
   "main": "dist/index.cjs",
   "module": "dist/index.esm.mjs",

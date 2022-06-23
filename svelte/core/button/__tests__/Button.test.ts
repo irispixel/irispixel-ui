@@ -30,9 +30,15 @@ test('renders raised variant button', () => {
   const { getByText } = render(Button, { props: { variant: 'raised' } });
 });
 
+test('renders unsupported variant button', () => {
+  // block is an unsupported variant
+  expect(render(Button, { props: { variant: 'block' } })).toThrow();
+});
+
 // Note: This is as an async test as we are using `fireEvent`
 test('changes button text on click', () => {
   const { getByText } = render(Button);
+
   // const button = getByText('World')
 
   // Using await when firing events is unique to the svelte testing library because

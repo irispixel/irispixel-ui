@@ -58,7 +58,7 @@ Trying to instantiate the child component directly through the `render` from `te
 
 `Child-notuseful.test.ts` 
 
-```svelte
+```typescript
 import { render, fireEvent } from '@testing-library/svelte';
 
 import Child from './Child.svelte';
@@ -106,7 +106,7 @@ See below.
 
 `Child.test.ts`
 
-```ts
+```typescript
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/svelte';
 import MockChild from './MockChild.svelte';
@@ -122,7 +122,7 @@ If you are using `jest` freel free to add the following to `jest.config.cjs` in 
 
 jest.config.cjs
 
-```cjs
+```js
   transformIgnorePatterns: [
     '<rootDir>/node_modules/(?!(@irispixel)/(svelte-context-test))'
   ],

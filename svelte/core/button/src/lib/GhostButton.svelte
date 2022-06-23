@@ -9,7 +9,7 @@
   import { get_radius_css, get_size_css, get_display_css } from './ButtonClass.svelte';
   export let color = 'primary';
   export let size = 'xs';
-  export let radius = 'xs';
+  export let radius: string | null = null;
   export let icon: typeof SvelteComponent | undefined = undefined;
   export let disabled = false;
   export let type = 'button';
@@ -43,33 +43,5 @@
   @import '../../../../../css/src/disabled.scss';
   @import '../../../../../css/src/size.scss';
   @import '../../../../../css/src/button.scss';
-
-  // Ghost buttons
-  .ghost-primary {
-    border: 1px solid theme_color('primary');
-    background: none;
-    color: theme_color('primary');
-    transition: background-color 0.5s ease;
-    background-color: inherit;
-  }
-
-  .hover-primary:hover,
-  .hover-primary:focus {
-    background-color: theme_color('primary');
-    color: var(--ip-primary-text, white);
-  }
-
-  .ghost-secondary {
-    border: 1px solid theme_color('secondary');
-    background: none;
-    color: theme_color('secondary');
-    transition: background-color 0.3s ease;
-    background-color: inherit;
-  }
-
-  .hover-secondary:hover,
-  .hover-secondary:focus {
-    background-color: theme_color('secondary');
-    color: var(--ip-secondary-text, white);
-  }
+  @import '../../../../../css/src/button-ghost.scss';
 </style>

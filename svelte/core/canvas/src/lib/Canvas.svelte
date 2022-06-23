@@ -6,7 +6,7 @@
 -->
 <script lang="ts">
   import { createEventDispatcher, onMount } from 'svelte';
-  import { observe_element } from '@irispixel/common-intersector';
+  import { observe } from '@irispixel/common-intersector';
 
   export let w = 32;
   export let h = 32;
@@ -15,19 +15,22 @@
 
   let canvas: HTMLCanvasElement;
 
-  function onIntersect(rect: DOMRectReadOnly) {
-    dispatch('boundrect', {
-      boundrect: rect
-    });
-  }
-
   onMount(() => {
     const ctx = canvas.getContext('2d');
     dispatch('newcontext', {
       ctx: ctx
     });
-    return observe_element(canvas, onIntersect);
   });
 </script>
 
-<canvas bind:this={canvas} width={w} height={h} on:click on:mousemove on:mousedown on:mouseup />
+<canvas
+  bind:this={canvas}
+  use:observe
+  on:intersect
+  width={w}
+  height={h}
+  on:click
+  on:mousemove
+  on:mousedown
+  on:mouseup
+/>

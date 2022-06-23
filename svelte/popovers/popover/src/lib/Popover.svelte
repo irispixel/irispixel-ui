@@ -5,17 +5,18 @@
  https://opensource.org/licenses/MIT
 -->
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import Portal from '@irispixel/svelte-portal/Portal.svelte';
-  import { observe_element } from '@irispixel/common-intersector';
   import {
     TriggerEvent,
     HAlign,
     VAlign,
     CloseOnLeave,
     trigger,
-    getAlignment
+    getAlignmentCSS,
+    ElementRect
   } from '@irispixel/common-popover';
+
+  import Portal from '@irispixel/svelte-portal/Portal.svelte';
+  import { observe, observe_with_options } from '@irispixel/common-intersector';
 
   export let vAlign = VAlign.Top;
   export let hAlign = HAlign.Left;
@@ -24,19 +25,27 @@
   export let isOpen = false;
   export let closeOnLeave = CloseOnLeave.Target;
 
+  // threshold represents the threshold parameter of IntersectionObserver.
+  export let threshold = 0.1;
+
   // closeTimeoutms indicates the closetimeout in milliseconds
   export let closeTimeoutms = 200;
 
   let insidePopover = false;
 
-  let popoverRoot: HTMLElement;
+  let elementRect = new ElementRect(0, 0, 0, 0);
 
-  let targetBoundingRect: DOMRectReadOnly;
+  $: observe_config = {
+    root: null, // 'null' - default viewport  . default value
+    rootMargin: '0px', // default value
+    threshold: threshold
+  };
 
-  $: styles =
-    targetBoundingRect !== null && targetBoundingRect !== undefined
-      ? getAlignment({ targetBoundingRect: targetBoundingRect, vAlign: vAlign, hAlign: hAlign })
-      : '';
+  $: styles = getAlignmentCSS({
+    elementRect: elementRect,
+    vAlign: vAlign,
+    hAlign: hAlign
+  });
 
   function onShow(el: HTMLElement) {
     isOpen = true;
@@ -71,24 +80,22 @@
     }
   }
 
-  function onIntersect(rect: DOMRectReadOnly) {
-    targetBoundingRect = rect;
-    styles = getAlignment({
-      targetBoundingRect: targetBoundingRect,
-      vAlign: vAlign,
-      hAlign: hAlign
-    });
+  function onIntersect(e: CustomEvent) {
+    const target = e.target as HTMLElement;
+    elementRect = new ElementRect(
+      target.offsetLeft,
+      target.offsetTop,
+      target.offsetWidth,
+      target.offsetHeight
+    );
+    styles = getAlignmentCSS({ elementRect: elementRect, vAlign: vAlign, hAlign: hAlign });
   }
-
-  onMount(() => {
-    return observe_element(popoverRoot, onIntersect);
-  });
 </script>
 
-<span>Popover Event {triggerEvent} </span>
 <div
   class="ip-popover-root"
-  bind:this={popoverRoot}
+  use:observe_with_options={observe_config}
+  on:intersect={onIntersect}
   use:trigger={triggerEvent}
   on:showpopover={onShow}
   on:togglepopover={onToggle}

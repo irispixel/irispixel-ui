@@ -21,3 +21,4 @@ irispixel.min.css
 /old
 *.css
 *.css.map
+.pnp.cjs

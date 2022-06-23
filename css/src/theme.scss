@@ -1,39 +1,33 @@
 // Copyright (c) 2022 IrisPixel
-// 
+//
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
-
-
-
 
 $light-bg: #fff;
 $light-color: #000;
 
 :global(body.dark) {
-    --background: #000;
-    --color: #fff;
+  --background-color: #000;
+  --color: #fff;
 }
 
 :global(body.ip-hide) {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 :global(body.scheme) {
-    color-scheme: light dark;
-    
-    color: var(--color, $light-color) !important;
-    background: var(--background, $light-bg) !important;
+  color-scheme: light dark;
 
-    @media (prefers-color-scheme: light) {
-        background-color: #FFF;
-        color: #000;
-    }
-      
-    @media (prefers-color-scheme: dark) {
-        background-color: #000;
-        color: #FFF;
-    }    
+  color: var(--color, $light-color) !important;
+  background-color: var(--background-color, $light-bg) !important;
+
+  @media (prefers-color-scheme: light) {
+    background-color: #fff;
+    color: #000;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #000;
+    color: #fff;
+  }
 }
-
-
-

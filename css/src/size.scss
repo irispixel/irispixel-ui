@@ -1,49 +1,55 @@
 // Copyright (c) 2022 IrisPixel
-// 
+//
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-
-
-
 .space {
-    min-width: 1rem;
+  min-width: 1rem;
 }
-  
+
 /// Size css
 .xs {
-    font-size: 0.25rem;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  font-size: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.sm {
+  font-size: 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 
 .md {
-    font-size: 1rem;
-    padding: 1rem 1rem 1rem 1rem;
+  font-size: 2rem;
+  padding: 1rem 1rem 1rem 1rem;
 }
 
 .lg {
-    font-size: 2rem;
-    padding: 2rem 2rem 2rem 2rem;
+  font-size: 3rem;
+  padding: 2rem 2rem 2rem 2rem;
 }
 
 .xl {
-    font-size: 4rem;
-    padding: 3rem 3rem 3rem 3rem;
+  font-size: 4rem;
+  padding: 3rem 3rem 3rem 3rem;
 }
-  
+
 // Radius
 .radius-xs {
-    border-radius: 0.25rem;
+  border-radius: 0.25rem;
 }
 
 .radius-sm {
-    border-radius: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.radius-md {
+  border-radius: 1rem;
 }
 
 .radius-lg {
-    border-radius: 1rem;
+  border-radius: 1.5rem;
 }
 
 .radius-xl {
-    border-radius: 2rem;
+  border-radius: 2.5rem;
 }

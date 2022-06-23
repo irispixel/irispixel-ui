@@ -1,9 +1,7 @@
 // Copyright (c) 2022 IrisPixel
-// 
+//
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
-
-
 
 @import './colors.scss';
 @import './shadow.scss';
@@ -42,7 +40,6 @@ $size_sm: 2; // rem
 .sz-xl {
   --ip-checkbox-dimension: 5; // rem
 }
-
 
 .hover-checkbox-primary:hover,
 .hover-checkbox-primary:focus {

@@ -1,16 +1,15 @@
 // Copyright (c) 2022 IrisPixel
-// 
+//
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
-
-
 
 @import './colors.scss';
 @import './shadow.scss';
 @import './checkbox-icon-common.scss';
-  
+
 .default-checkbox-icon {
   position: absolute;
+  user-select: none;
   top: 0;
   left: 0;
   margin: calc(var(--ip-checkbox-dimension, $size_sm) * 0.05rem);
@@ -20,6 +19,7 @@
 
 .default-checkbox-icon::after {
   content: '';
+  user-select: none;
   position: absolute;
   display: block;
 
@@ -28,7 +28,8 @@
   width: calc(var(--ip-checkbox-dimension, $size_sm) * 0.2rem);
   height: calc(var(--ip-checkbox-dimension, $size_sm) * 0.35rem);
   border: solid white;
-  border-width: 0 calc(var(--ip-checkbox-dimension) * 0.1rem) calc(var(--ip-checkbox-dimension) * 0.1rem) 0;
+  border-width: 0 calc(var(--ip-checkbox-dimension) * 0.1rem)
+    calc(var(--ip-checkbox-dimension) * 0.1rem) 0;
   transform: rotate(45deg);
 }
 
@@ -42,11 +43,9 @@
 }
 
 .indeterminate-primary-checkbox {
-
 }
 
 .indeterminate-secondary-checkbox {
-
 }
 
 .unchecked-color {

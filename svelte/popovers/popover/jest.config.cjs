@@ -9,7 +9,7 @@ module.exports = {
       }
     ]
   },
-  transformIgnorePatterns: ['<rootDir>/node_modules/(?!(@irispixel)/(svelte-portal))'],
+  transformIgnorePatterns: ['<rootDir>/node_modules/(?!(@irispixel)/(svelte-portal))/'],
   moduleFileExtensions: ['js', 'ts', 'svelte'],
   moduleNameMapper: {
     '^\\$lib(.*)$': '<rootDir>/src/lib$1'

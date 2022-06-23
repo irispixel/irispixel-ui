@@ -9,7 +9,7 @@
   import { get_radius_css, get_size_css, get_display_css } from './ButtonClass.svelte';
   export let color = 'primary';
   export let size = 'xs';
-  export let radius = 'xs';
+  export let radius: string | null = null;
   export let icon: typeof SvelteComponent | undefined = undefined;
   export let disabled = false;
   export let type = 'button';
@@ -43,29 +43,5 @@
   @import '../../../../../css/src/disabled.scss';
   @import '../../../../../css/src/size.scss';
   @import '../../../../../css/src/button.scss';
-
-  // Flat buttons
-  .flat-primary {
-    background-color: theme_color('primary');
-    color: var(--ip-primary-text, white);
-    border: none;
-    transition: background-color 0.3s ease;
-  }
-
-  .hover-primary:hover,
-  .hover-primary:focus {
-    background-color: darken_theme_color('primary');
-  }
-
-  .flat-secondary {
-    background-color: theme_color('secondary');
-    color: var(--ip-secondary-text, white);
-    border: none;
-    transition: background-color 0.3s ease;
-  }
-
-  .hover-secondary:hover,
-  .hover-secondary:focus {
-    background-color: darken_theme_color('secondary');
-  }
+  @import '../../../../../css/src/button-flat.scss';
 </style>

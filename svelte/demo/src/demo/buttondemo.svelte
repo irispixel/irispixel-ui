@@ -12,7 +12,7 @@ import ButtonGroup from '@svelte.core/button/src/lib/ButtonGroup.svelte';
 import { ActivityIcon, AirplayIcon, LogInIcon, LogOutIcon, MenuIcon } from 'svelte-feathers';
 
 const colors = ['primary', 'secondary'];
-const sizes = ['sm', 'md', 'lg', 'xl'];
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 const variants = ['flat', 'text', 'ghost', 'raised'];
 </script>
 <h1>Svelte Buttons</h1>

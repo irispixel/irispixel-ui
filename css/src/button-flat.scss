@@ -1,0 +1,38 @@
+// Copyright (c) 2022 IrisPixel
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+@import './shadow.scss';
+
+// Flat buttons
+.flat-primary {
+  background-color: theme_color('primary');
+  color: text_color('primary');
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.hover-primary:hover,
+.hover-primary:active {
+  background-color: darken_theme_color('primary');
+}
+
+.hover-primary:focus {
+  box-shadow: shadow('primary');
+}
+
+.flat-secondary {
+  background-color: theme_color('secondary');
+  color: text_color('secondary');
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.hover-secondary:hover,
+.hover-secondary:active {
+  background-color: darken_theme_color('secondary');
+}
+
+.hover-secondary:focus {
+  box-shadow: shadow('secondary');
+}

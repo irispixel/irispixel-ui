@@ -1,6 +1,6 @@
 {
   "name": "@irispixel/common-popover",
-  "version": "0.2.2",
+  "version": "0.2.7",
   "entry": "src/index.ts",
   "main": "dist/index.cjs",
   "module": "dist/index.esm.mjs",

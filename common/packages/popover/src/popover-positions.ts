@@ -20,50 +20,72 @@ export enum CloseOnLeave {
   Popover = 'popover'
 }
 
+export class ElementRect {
+  x: number;
+  y: number;
+  top: number;
+  left: number;
+  bottom: number;
+  right: number;
+  width: number;
+  height: number;
+
+  constructor(x: number, y: number, width: number, height: number) {
+    this.x = x;
+    this.y = y;
+    this.left = x;
+    this.top = y;
+    this.bottom = y + height;
+    this.right = x + width;
+    this.width = width;
+    this.height = height;
+  }
+}
+
 type PositionType = {
-  targetBoundingRect: DOMRectReadOnly;
+  elementRect: ElementRect;
   hAlign: HAlign;
   vAlign: VAlign;
 };
 
 interface Alignment {
-  getCSS(targetBoundingRect: DOMRectReadOnly): string;
+  getCSS(elementRect: ElementRect): string;
 }
 
 class TopLeft implements Alignment {
-  getCSS(targetBoundingRect: DOMRectReadOnly): string {
+  getCSS(elementRect: ElementRect): string {
     return `
-            top: ${targetBoundingRect?.top}px;
-            left: ${targetBoundingRect?.left}px;
+            top: ${elementRect.top}px;
+            left: ${elementRect.left}px;
             transform: translateY(-100%);
         `;
   }
 }
 
 class TopRight implements Alignment {
-  getCSS(targetBoundingRect: DOMRectReadOnly): string {
+  getCSS(elementRect: ElementRect): string {
     return `
-            top: ${targetBoundingRect?.top}px;
-            left: ${targetBoundingRect?.right}px;
+            top: ${elementRect.top}px;
+            left: ${elementRect.right}px;
             transform: translate(-100%, -100%);
         `;
   }
 }
 
 class TopMiddle implements Alignment {
-  getCSS(targetBoundingRect: DOMRectReadOnly): string {
+  getCSS(elementRect: ElementRect): string {
     return `
-            top: ${targetBoundingRect?.top}px;
-            left: ${targetBoundingRect?.right - targetBoundingRect?.width / 2}px;
+            top: ${elementRect.top}px;
+            left: ${elementRect.right - elementRect.width / 2}px;
             transform: translate(-50%, -100%);
         `;
   }
 }
 
 class BottomLeft implements Alignment {
-  getCSS(targetBoundingRect: DOMRectReadOnly): string {
-    const top = targetBoundingRect?.bottom;
-    const left = targetBoundingRect?.left;
+  getCSS(elementRect: ElementRect): string {
+    const top = elementRect.bottom;
+    const left = elementRect.left;
     return `
             top: ${top}px;
             left: ${left}px;
@@ -72,20 +94,20 @@ class BottomLeft implements Alignment {
 }
 
 class BottomRight implements Alignment {
-  getCSS(targetBoundingRect: DOMRectReadOnly): string {
+  getCSS(elementRect: ElementRect): string {
     return `
-        top: ${targetBoundingRect?.bottom}px;
-        left: ${targetBoundingRect?.right}px;
+        top: ${elementRect.bottom}px;
+        left: ${elementRect.right}px;
         transform: translateX(-100%);
         `;
   }
 }
 
 class BottomMiddle implements Alignment {
-  getCSS(targetBoundingRect: DOMRectReadOnly): string {
+  getCSS(elementRect: ElementRect): string {
     return `
-        top: ${targetBoundingRect?.bottom}px;
-        left: ${targetBoundingRect?.right - targetBoundingRect?.width / 2}px;
+        top: ${elementRect.bottom}px;
+        left: ${elementRect.right - elementRect.width / 2}px;
         transform: translateX(-50%);
         `;
   }
@@ -98,7 +120,10 @@ const bottomLeft = new BottomLeft();
 const bottomRight = new BottomRight();
 const bottomMiddle = new BottomMiddle();
 
-function getAlignment(positionType: PositionType): string {
+function doGetAlignmentCSS(positionType: PositionType): string {
+  if (positionType.elementRect === null || positionType.elementRect === undefined) {
+    return '';
+  }
   let alignment = topLeft;
   switch (positionType.hAlign) {
     case HAlign.Right:
@@ -136,8 +161,12 @@ function getAlignment(positionType: PositionType): string {
       }
       break;
   }
-  return alignment.getCSS(positionType.targetBoundingRect);
+  return alignment.getCSS(positionType.elementRect);
 }
 
-export { getAlignment };
+function getAlignmentCSS(positionType: PositionType): string {
+  return `position: absolute; ${doGetAlignmentCSS(positionType)}`;
+}
+
+export { getAlignmentCSS };
 export { PositionType };

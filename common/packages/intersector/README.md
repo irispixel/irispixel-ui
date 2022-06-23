@@ -1,3 +1,3 @@
 # Intersector
 
-API using DOMIntersector
+API using `IntersectionObserver` and `ResizeObserver` available.

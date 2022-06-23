@@ -1,0 +1,42 @@
+// Copyright (c) 2022 IrisPixel
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+@import './shadow.scss';
+
+// Ghost buttons
+.ghost-primary {
+  border: 1px solid theme_color('primary');
+  background: none;
+  color: theme_color('primary');
+  transition: background-color 0.5s ease;
+  background-color: inherit;
+}
+
+.hover-primary:hover,
+.hover-primary:active {
+  background-color: theme_color('primary');
+  color: text_color('primary');
+}
+
+.hover-primary:focus {
+  box-shadow: shadow('primary');
+}
+
+.ghost-secondary {
+  border: 1px solid theme_color('secondary');
+  background: none;
+  color: theme_color('secondary');
+  transition: background-color 0.3s ease;
+  background-color: inherit;
+}
+
+.hover-secondary:hover,
+.hover-secondary:active {
+  background-color: theme_color('secondary');
+  color: text_color('secondary');
+}
+
+.hover-secondary:focus {
+  box-shadow: shadow('secondary');
+}

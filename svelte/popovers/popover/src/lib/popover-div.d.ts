@@ -12,5 +12,7 @@ declare namespace svelte.JSX {
     ontogglepopover?: (el: HTMLElement) => any;
 
     onintersect?: (e: CustomEvent) => any;
+
+    onresize?: (e: CustomEvent) => any;
   }
 }

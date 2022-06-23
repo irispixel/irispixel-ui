@@ -4,4 +4,11 @@
 // https://opensource.org/licenses/MIT
 
 export { TriggerEvent, trigger } from './popover-triggers';
-export { HAlign, VAlign, CloseOnLeave, PositionType, getAlignment } from './popover-positions';
+export {
+  HAlign,
+  VAlign,
+  CloseOnLeave,
+  PositionType,
+  getAlignmentCSS,
+  ElementRect
+} from './popover-positions';

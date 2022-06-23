@@ -1,14 +1,21 @@
 // Copyright (c) 2022 IrisPixel
-// 
+//
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
-
 
 @use 'sass:color';
 
 $primary-h: 200;
 $primary-s: 96%;
 $primary-l: 50%;
+
+$primary-text-h: 200;
+$primary-text-s: 96%;
+$primary-text-l: 100%;
+
+$secondary-text-h: 200;
+$secondary-text-s: 96%;
+$secondary-text-l: 100%;
 
 $primary-darken: 10%;
 $primary-lighten: 5%;
@@ -17,81 +24,89 @@ $secondary-darken: 10%;
 $secondary-lighten: 5%;
 
 @function text_color($color-name) {
-  @if $color-name =='primary' {
-    @return hsl(var(--ip-primary-text-h, $primary-text-h),
+  @if $color-name == 'primary' {
+    @return hsl(
+      var(--ip-primary-text-h, $primary-text-h),
       var(--ip-primary-text-s, $primary-text-s),
-      var(--ip-primary-text-l, $primary-text-l));
-  }
-
-  @else if ($color-name =='secondary') {
-    @return hsl(var(--ip-secondary-text-h, $secondary-text-h),
+      var(--ip-primary-text-l, $primary-text-l)
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsl(
+      var(--ip-secondary-text-h, $secondary-text-h),
       var(--ip-secondary-text-s, $secondary-text-s),
-      var(--ip-secondary-text-l, $secondary-text-l));
-  }
-
-  @else {
-    @return hsl(var(--ip-primary-text-h, $primary-text-h),
+      var(--ip-secondary-text-l, $secondary-text-l)
+    );
+  } @else {
+    @return hsl(
+      var(--ip-primary-text-h, $primary-text-h),
       var(--ip-primary-text-s, $primary-text-s),
-      var(--ip-primary-text-l, $primary-text-l));
+      var(--ip-primary-text-l, $primary-text-l)
+    );
   }
 }
 
 @function theme_color($color-name) {
-  @if $color-name =='primary' {
-    @return hsl(var(--ip-primary-h, $primary-h),
+  @if $color-name == 'primary' {
+    @return hsl(
+      var(--ip-primary-h, $primary-h),
       var(--ip-primary-s, $primary-s),
-      var(--ip-primary-l, $primary-l));
-  }
-
-  @else if ($color-name =='secondary') {
-    @return hsl(var(--ip-secondary-h, calc(var(--ip-primary-h, $primary-h) + 180)),
+      var(--ip-primary-l, $primary-l)
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsl(
+      var(--ip-secondary-h, calc(var(--ip-primary-h, $primary-h) + 180)),
       var(--ip-secondary-s, var(--ip-primary-s, $primary-s)),
-      var(--ip-secondary-l, var(--ip-primary-l, $primary-l)));
-  }
-
-  @else {
-    @return hsl(var(--ip-primary-h, $primary-h),
+      var(--ip-secondary-l, var(--ip-primary-l, $primary-l))
+    );
+  } @else {
+    @return hsl(
+      var(--ip-primary-h, $primary-h),
       var(--ip-primary-s, $primary-s),
-      var(--ip-primary-l, $primary-l));
+      var(--ip-primary-l, $primary-l)
+    );
   }
 }
 
 @function darken_theme_color($color-name) {
-  @if $color-name =='primary' {
-    @return hsl(var(--ip-primary-h, $primary-h),
+  @if $color-name == 'primary' {
+    @return hsl(
+      var(--ip-primary-h, $primary-h),
       var(--ip-primary-s, $primary-s),
-      calc(var(--ip-primary-l, $primary-l) - var(--ip-primary-darken, $primary-darken)));
-  }
-
-  @else if ($color-name =='secondary') {
-    @return hsl(calc(var(--ip-secondary-h, $primary-h) + 180),
+      calc(var(--ip-primary-l, $primary-l) - var(--ip-primary-darken, $primary-darken))
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsl(
+      calc(var(--ip-secondary-h, $primary-h) + 180),
       var(--ip-secondary-s, $primary-s),
-      calc(var(--ip-secondary-l, $primary-l) - var(--ip-secondary-darken, $primary-darken)));
-  }
-
-  @else {
-    @return hsl(var(--ip-primary-h, $primary-h),
+      calc(var(--ip-secondary-l, $primary-l) - var(--ip-secondary-darken, $primary-darken))
+    );
+  } @else {
+    @return hsl(
+      var(--ip-primary-h, $primary-h),
       var(--ip-primary-s, $primary-s),
-      calc(var(--ip-primary-l, $primary-l) - var(--ip-primary-darken, $primary-darken)));
+      calc(var(--ip-primary-l, $primary-l) - var(--ip-primary-darken, $primary-darken))
+    );
   }
 }
 
 @function lighten_theme_color($color-name) {
-  @if $color-name =='primary' {
-    @return hsl(var(--ip-primary-h, $primary-h),
+  @if $color-name == 'primary' {
+    @return hsl(
+      var(--ip-primary-h, $primary-h),
       var(--ip-primary-s, $primary-s),
-      calc(var(--ip-primary-l, $primary-l) + var(--ip-primary-lighten, $primary-lighten)));
-  }
-
-  @else if ($color-name =='secondary') {
-    @return hsl(calc(var(--ip-secondary-h, $primary-h) + 180),
+      calc(var(--ip-primary-l, $primary-l) + var(--ip-primary-lighten, $primary-lighten))
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsl(
+      calc(var(--ip-secondary-h, $primary-h) + 180),
       var(--ip-secondary-s, $primary-s),
-      calc(var(--ip-secondary-l, $primary-l) + var(--ip-secondary-lighten, $secondary-lighten)));
-  }
-
-  @else {
-    @return hsl(var(--ip-primary-h, $primary-h),
+      calc(var(--ip-secondary-l, $primary-l) + var(--ip-secondary-lighten, $secondary-lighten))
+    );
+  } @else {
+    @return hsl(
+      var(--ip-primary-h, $primary-h),
       var(--ip-primary-s, $primary-s),
-      calc(var(--ip-primary-l, $primary-l) + var(--ip-primary-lighten, $primary-lighten)));
+      calc(var(--ip-primary-l, $primary-l) + var(--ip-primary-lighten, $primary-lighten))
+    );
   }
 }

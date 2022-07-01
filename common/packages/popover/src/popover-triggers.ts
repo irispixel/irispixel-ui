@@ -3,6 +3,11 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+export enum CloseOnLeave {
+  Target = 'target',
+  Popover = 'popover'
+}
+
 export enum TriggerEvent {
   Hover = 'hover',
   Click = 'click'

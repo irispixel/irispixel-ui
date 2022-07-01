@@ -23,7 +23,4 @@ beforeEach(() => {
 
 test('renders a DropdownList', () => {
   const { getByText } = render(DropdownList);
-  // const button = getByText('World')
-
-  // expect(button).toBeInTheDocument()
 });

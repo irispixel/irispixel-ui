@@ -3,27 +3,15 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-@import './colors.scss';
+@import './_colors.scss';
+@import './_disabled.scss';
+@import './_toggle-size.scss';
+@import './_toggle-icon-ios.scss';
+@import './_toggle-icon-android.scss';
+@import './_toggle-icon-windows.scss';
 
 $inner-ratio: 0.8;
 $border-radius: 2.25; //rem
-
-// Sizes of toggle
-.xs-toggle {
-  --ip-toggle-border-radius: 1; //rem
-}
-.sm-toggle {
-  --ip-toggle-border-radius: 2; //rem
-}
-.md-toggle {
-  --ip-toggle-border-radius: 3; //rem
-}
-.lg-toggle {
-  --ip-toggle-border-radius: 4; //rem
-}
-.xl-toggle {
-  --ip-toggle-border-radius: 5; //rem
-}
 
 // Slider Root
 .slider-root {
@@ -31,31 +19,7 @@ $border-radius: 2.25; //rem
   position: relative;
   width: calc(var(--ip-toggle-border-radius, $border-radius) * 2rem);
   height: calc(var(--ip-toggle-border-radius, $border-radius) * 1rem);
-}
-
-// Variants
-.ios-toggle {
-  border-radius: calc(var(--ip-toggle-border-radius, $border-radius) * 1rem);
-}
-
-.ios-toggle-icon {
-  border-radius: 50%;
-}
-
-// android toggle
-.android-toggle {
-  border-radius: calc(var(--ip-toggle-border-radius, $border-radius) * 1rem);
-}
-
-.android-toggle-icon {
-  border-radius: 50%;
-}
-
-// windows toggle
-.windows {
-}
-
-.windows-toggle-icon {
+  margin: 8px;
 }
 
 // slider itself
@@ -65,21 +29,33 @@ $border-radius: 2.25; //rem
   left: 0;
   right: 0;
   bottom: 0;
-  transition: 0.4s;
 }
+
+// checked
 .checked-primary {
   background-color: theme_color('primary');
+}
+
+.checked-primary:hover {
+  outline: 4px solid lighten_theme_color('primary');
+}
+
+.checked-primary:active {
+  outline: 1px solid lighten_theme_color('primary');
+  background-color: inherit;
 }
 
 .checked-secondary {
   background-color: theme_color('secondary');
 }
-// checked color of a slider
-.checked {
-  background-color: #2196f3;
+
+.checked-secondary:hover {
+  outline: 4px solid lighten_theme_color('secondary');
 }
+
+// checked color of a slider
 .unchecked {
-  background-color: #ccc;
+  background-color: var(--ip-toggle-color, #aaa);
 }
 
 // icon itself
@@ -103,12 +79,12 @@ $border-radius: 2.25; //rem
       var(--ip-toggle-border-radius, $border-radius) * 0.5rem
   );
   transition: 0.4s;
-  background-color: white;
+  background-color: var(--ip-background-color);
 }
 
 .checked-icon {
   transform: translateX(calc(var(--ip-toggle-border-radius, $border-radius) * 1rem));
 }
 .unchecked-icon {
-  background-color: white;
+  background-color: var(--ip-background-color);
 }

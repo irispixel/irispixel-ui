@@ -13,7 +13,7 @@
   export let radius = 'xs';
   export let icon: typeof SvelteComponent | undefined = undefined;
   export let disabled = false;
-  export let variant = 'alpha';
+  // export let variant = 'alpha';
 
   export let label = '';
 
@@ -47,17 +47,10 @@
   @import '../../../../../css/src/input.scss';
   @import '../../../../../css/src/shadow.scss';
 
-  // Input
-  .primary {
-  }
-
   .hover-primary:hover,
   .hover-primary:focus {
     border-color: theme_color('primary');
     box-shadow: shadow('primary');
-  }
-
-  .secondary {
   }
 
   .hover-secondary:hover,

@@ -3,11 +3,15 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+@import './_colors.scss';
+@import './_disabled.scss';
+
 .ip-checkbox-label {
   user-select: none;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
+  padding: 5px;
 }
 
 .ip-input-hidden {
@@ -29,4 +33,28 @@
 .unchecked {
   opacity: var(--ip-toggle-opacity-unchecked, 0.9);
   cursor: pointer;
+}
+
+.primary-label:hover {
+  background-color: lighten_theme_color('primary');
+  color: var(--ip-color);
+}
+
+.primary-label:active,
+.primary-label:focus {
+  outline: 1px solid lighten_theme_color('primary');
+  background-color: transparent;
+  color: var(--ip-color);
+}
+
+.secondary-label:hover {
+  background-color: lighten_theme_color('secondary');
+  color: var(--ip-color);
+}
+
+.secondary-label:active,
+.secondary-label:focus {
+  outline: 1px solid lighten_theme_color('secondary');
+  background-color: transparent;
+  color: var(--ip-color);
 }

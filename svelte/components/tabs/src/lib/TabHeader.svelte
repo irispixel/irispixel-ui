@@ -6,12 +6,17 @@
 -->
 <script lang="ts">
   export let selected = false;
+  export let color = 'primary';
+  export let item = '';
+
+  $: colorClass = selected ? 'border-' + color : '';
+  $: selectedClass = selected ? 'selected' : 'unselected';
 </script>
 
-<span class="ip-tabheader-root" class:selected>
-  <slot />
+<span class="ip-tabheader-root {colorClass} {selectedClass}">
+  {item}
 </span>
 
 <style lang="scss">
-  @import '../../../../../css/src/tabheader.scss';
+  @use '../../../../../css/src/tabheader.scss';
 </style>

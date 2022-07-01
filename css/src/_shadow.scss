@@ -1,0 +1,9 @@
+// Copyright (c) 2022 IrisPixel
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+// shadows as 'elevation'
+@function shadow($color) {
+  @return 0 0 5px theme_color($color);
+}

@@ -20,7 +20,4 @@ beforeEach(() => {
 
 test('renders a AutoComplete', () => {
   const { getByText } = render(AutoComplete);
-  // const button = getByText('World')
-
-  // expect(button).toBeInTheDocument()
 });

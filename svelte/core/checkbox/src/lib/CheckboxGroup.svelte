@@ -5,26 +5,31 @@
  https://opensource.org/licenses/MIT
 -->
 <script lang="ts" context="module">
-  export const keyName = 'ctx-ip-checkbox-name';
-  export const keyGroup = 'ctx-ip-checkbox-group';
-  export const keyGroupDisabled = 'ctx-ip-radio-group-disabled';
+  export const keyColor = 'ctx-ip-checkboxgroup-color';
+  export const keySize = 'ctx-ip-checkboxgroup-size';
 </script>
 
 <script lang="ts">
   import { setContext } from 'svelte';
   import { writable } from 'svelte/store';
+  import RawCheckboxGroup from './RawCheckboxGroup.svelte';
 
   export let group: Array<string> = [];
   export let name = '';
+  export let disabled = false;
+  export let color = 'primary';
+  export let size = 'xs';
 
-  let groupState = writable(group);
-  let nameState = writable(name);
+  let colorState = writable(color);
+  let szState = writable(size);
 
-  $: groupState.set(group);
-  $: nameState.set(name);
+  $: colorState.set(color);
+  $: szState.set(size);
 
-  setContext(keyName, nameState);
-  setContext(keyGroup, groupState);
+  setContext(keyColor, colorState);
+  setContext(keySize, szState);
 </script>
 
-<slot />
+<RawCheckboxGroup bind:group {name} {disabled}>
+  <slot />
+</RawCheckboxGroup>

@@ -1,0 +1,10 @@
+// Copyright (c) 2022 IrisPixel
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+.border-solid {
+  border-width: var(--ip-border-size, 1px);
+  border-style: solid;
+  border-color: transparent;
+}

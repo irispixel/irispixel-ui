@@ -3,12 +3,15 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-export { TriggerEvent, trigger } from './popover-triggers';
+export { CloseOnLeave, TriggerEvent, trigger } from './popover-triggers';
+export { PopoverPosition, getPopoverStyles } from './popover-positions';
 export {
-  HAlign,
-  VAlign,
-  CloseOnLeave,
-  PositionType,
-  getAlignmentCSS,
-  ElementRect
-} from './popover-positions';
+  FnGetStyles,
+  ElementRect,
+  zeroRect,
+  getEmptyStyles,
+  getElementRect,
+  Alignment,
+  AlignmentRegistry,
+  getAlignmentCSS
+} from './rect';

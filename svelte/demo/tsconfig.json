@@ -19,7 +19,7 @@
       "@svelte.charts/*": ["../charts/*"],
       "@svelte.demo/*": ["./src/demo/*"],
       "@layouts/*": ["./src/layouts/*"],
-      "@components/*": ["./src/components/*"],
+      "@components/*": ["./src/components/*"]
     }
   }
 }

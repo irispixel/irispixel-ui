@@ -5,28 +5,19 @@
  https://opensource.org/licenses/MIT
 -->
 <script lang="ts">
-  import { getContext } from 'svelte';
-  import type { Writable } from 'svelte/store';
-  import { keyChecked, keyColor, keyDisabled, keySize } from './RadioButton.svelte';
+  export let size = 'xl';
+  export let color = 'primary';
+  export let disabled = false;
+  export let checked = false;
 
-  const checkedState: Writable<string> = getContext(keyChecked);
-  const szState: Writable<string> = getContext(keySize);
-  const disabledState: Writable<boolean> = getContext(keyDisabled);
-  const colorState: Writable<string> = getContext(keyColor);
-
-  $: sz = $szState;
-  $: color = $colorState;
-  $: disabled = $disabledState;
-  $: checked = $checkedState;
-  $: colorClass = !checked ? 'unchecked-color' : color + '-checkbox';
-  $: iconColorClass = !checked ? 'unchecked-color' : color + '-radio-icon';
+  $: colorClass = checked ? 'checked-' + color : 'unchecked';
   $: hoverClass = disabled ? '' : 'hover-checkbox-' + color;
-  $: szClass = 'sz-' + sz;
+  $: tickColorClass = disabled ? '' : checked ? 'tick-checked' : '';
+  $: szClass = 'sz-' + size;
 </script>
 
-<span class="ip-checkbox-icon-root {szClass}">
-  <span class="default-radio-icon {hoverClass} {colorClass} {szClass}" />
-  <span class="radio-icon-next {iconColorClass} {szClass}" />
+<span class="ip-checkbox-icon-root circle {szClass} {hoverClass} {colorClass}">
+  <span class="checkbox-tick {tickColorClass}" />
 </span>
 
 <style lang="scss">

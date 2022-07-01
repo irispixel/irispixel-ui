@@ -20,15 +20,13 @@ function doInitObserver(
 ): IntersectionObserver {
   return new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        el.dispatchEvent(
-          new CustomEvent('intersect', {
-            detail: {
-              entry: entry
-            }
-          })
-        );
-      }
+      el.dispatchEvent(
+        new CustomEvent('intersect', {
+          detail: {
+            entry: entry
+          }
+        })
+      );
     });
   }, config);
 }

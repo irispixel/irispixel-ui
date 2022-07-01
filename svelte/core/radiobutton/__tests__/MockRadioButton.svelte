@@ -6,7 +6,7 @@
 -->
 <script lang="ts">
   import RadioButton from '$lib/RadioButton.svelte';
-  import { keyGroup } from '$lib/RadioGroup.svelte';
+  import { keyGroup } from '$lib/RawRadioGroup.svelte';
   import { writable } from 'svelte/store';
   import ContextTest, { type KeyValue } from '@irispixel/svelte-context-test/ContextTest.svelte';
   const keyValues: Array<KeyValue> = [{ key: keyGroup, value: writable([]) } as KeyValue];

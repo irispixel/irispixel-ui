@@ -3,53 +3,15 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-export enum HAlign {
-  Right = 'right',
-  Middle = 'middle',
-  Left = 'left'
-}
+import { ElementRect, Alignment, getAlignmentCSS } from './rect';
 
-export enum VAlign {
-  Top = 'top',
-  Middle = 'middle',
-  Bottom = 'bottom'
-}
-
-export enum CloseOnLeave {
-  Target = 'target',
-  Popover = 'popover'
-}
-
-export class ElementRect {
-  x: number;
-  y: number;
-  top: number;
-  left: number;
-  bottom: number;
-  right: number;
-  width: number;
-  height: number;
-
-  constructor(x: number, y: number, width: number, height: number) {
-    this.x = x;
-    this.y = y;
-    this.left = x;
-    this.top = y;
-    this.bottom = y + height;
-    this.right = x + width;
-    this.width = width;
-    this.height = height;
-  }
-}
-
-type PositionType = {
-  elementRect: ElementRect;
-  hAlign: HAlign;
-  vAlign: VAlign;
-};
-
-interface Alignment {
-  getCSS(elementRect: ElementRect): string;
+export enum PopoverPosition {
+  TopLeft = 'top-left',
+  TopMiddle = 'top-middle',
+  TopRight = 'top-right',
+  BottomLeft = 'bottom-left',
+  BottomMiddle = 'bottom-middle',
+  BottomRight = 'bottom-right'
 }
 
 class TopLeft implements Alignment {
@@ -120,53 +82,27 @@ const bottomLeft = new BottomLeft();
 const bottomRight = new BottomRight();
 const bottomMiddle = new BottomMiddle();
 
-function doGetAlignmentCSS(positionType: PositionType): string {
-  if (positionType.elementRect === null || positionType.elementRect === undefined) {
-    return '';
+class PopoverPositionRegistry {
+  map = new Map<PopoverPosition, Alignment>();
+
+  constructor() {
+    this.map.set(PopoverPosition.TopMiddle, topMiddle);
+    this.map.set(PopoverPosition.TopLeft, topLeft);
+    this.map.set(PopoverPosition.TopRight, topRight);
+    this.map.set(PopoverPosition.BottomMiddle, bottomMiddle);
+    this.map.set(PopoverPosition.BottomLeft, bottomLeft);
+    this.map.set(PopoverPosition.BottomRight, bottomRight);
   }
-  let alignment = topLeft;
-  switch (positionType.hAlign) {
-    case HAlign.Right:
-      switch (positionType.vAlign) {
-        case VAlign.Bottom:
-          alignment = bottomRight;
-          break;
-        case VAlign.Top:
-        default:
-          alignment = topRight;
-          break;
-      }
-      break;
-    case HAlign.Middle:
-      switch (positionType.vAlign) {
-        case VAlign.Bottom:
-          alignment = bottomMiddle;
-          break;
-        case VAlign.Top:
-        default:
-          alignment = topMiddle;
-          break;
-      }
-      break;
-    case HAlign.Left:
-    default:
-      switch (positionType.vAlign) {
-        case VAlign.Bottom:
-          alignment = bottomLeft;
-          break;
-        case VAlign.Top:
-        default:
-          alignment = topLeft;
-          break;
-      }
-      break;
+
+  getAlignment(position: PopoverPosition): Alignment | undefined {
+    return this.map.get(position);
   }
-  return alignment.getCSS(positionType.elementRect);
 }
 
-function getAlignmentCSS(positionType: PositionType): string {
-  return `position: absolute; ${doGetAlignmentCSS(positionType)}`;
-}
+const positionRegistry = new PopoverPositionRegistry();
 
-export { getAlignmentCSS };
-export { PositionType };
+export function getPopoverStyles(position: PopoverPosition) {
+  return (elementRect: ElementRect) => {
+    return `position: absolute; ${getAlignmentCSS(position, elementRect, positionRegistry)}`;
+  };
+}

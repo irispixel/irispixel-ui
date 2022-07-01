@@ -6,19 +6,12 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import {
-  getAlignmentCSS,
-  HAlign,
-  VAlign,
-  PositionType,
-  ElementRect
-} from '../src/popover-positions';
+import { ElementRect } from '../src/rect';
+import { getPopoverStyles, PopoverPosition } from '../src/popover-positions';
 
-test('testing getAlignment', () => {
-  let positionType: PositionType = {
-    hAlign: HAlign.Left,
-    vAlign: VAlign.Top,
-    elementRect: new ElementRect(0, 0, 10, 10)
-  };
-  const cssClass = getAlignmentCSS(positionType);
+test('testing getPopoverStyles - popover', () => {
+  let elementRect = new ElementRect(0, 0, 10, 10);
+  for (let position of Object.values(PopoverPosition)) {
+    getPopoverStyles(position)(elementRect);
+  }
 });

@@ -1,3 +1,3 @@
-# Button
+# Box
 
-Button component of svelte
+Box component of svelte

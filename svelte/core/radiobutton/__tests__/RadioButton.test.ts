@@ -12,6 +12,4 @@ import MockRadioButton from './MockRadioButton.svelte';
 
 test('renders a RadioButton', () => {
   const { getByText } = render(MockRadioButton);
-  // const button = getByText('World')
-  // expect(button).toBeInTheDocument()
 });

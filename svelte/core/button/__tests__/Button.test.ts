@@ -31,8 +31,8 @@ test('renders raised variant button', () => {
 });
 
 test('renders unsupported variant button', () => {
-  // block is an unsupported variant
-  expect(render(Button, { props: { variant: 'block' } })).toThrow();
+  // block is an unsupported variant. Hence 'expected' to throw an error.
+  expect(() => render(Button, { props: { variant: 'block' } })).toThrow();
 });
 
 // Note: This is as an async test as we are using `fireEvent`

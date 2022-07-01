@@ -7,27 +7,32 @@ $light-bg: #fff;
 $light-color: #000;
 
 :global(body.dark) {
-  --background-color: #000;
-  --color: #fff;
+  --ip-background-color: var(--ip-color-dark, #000);
+  --ip-color: var(--ip-color-light, #fff);
 }
 
 :global(body.ip-hide) {
   visibility: hidden;
 }
 
+:global(body.light) {
+  --ip-background-color: var(--ip-color-light, #fff);
+  --ip-color: var(--ip-color-dark, #000);
+}
+
 :global(body.scheme) {
   color-scheme: light dark;
 
-  color: var(--color, $light-color) !important;
-  background-color: var(--background-color, $light-bg) !important;
+  color: var(--ip-color) !important;
+  background-color: var(--ip-background-color) !important;
 
   @media (prefers-color-scheme: light) {
-    background-color: #fff;
-    color: #000;
+    background-color: var(--ip-color-light, #fff);
+    color: var(--ip-color-dark, #000);
   }
 
   @media (prefers-color-scheme: dark) {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--ip-color-dark, #000);
+    color: var(--ip-color-light, #fff);
   }
 }

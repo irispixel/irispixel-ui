@@ -2,14 +2,9 @@
 
 // NOTE: jest-dom adds handy assertions to Jest and it is recommended, but not required.
 import '@testing-library/jest-dom';
-
-import { render, fireEvent } from '@testing-library/svelte';
-
+import { render } from '@testing-library/svelte';
 import CheckboxGroup from '$lib/CheckboxGroup.svelte';
 
-test('renders a checkbox group', () => {
+test('renders a CheckboxGroup', () => {
   const { getByText } = render(CheckboxGroup);
-  // const button = getByText('World')
-
-  // expect(button).toBeInTheDocument()
 });

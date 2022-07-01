@@ -28,7 +28,7 @@
     "pub": "npm publish --tolerate-republish"
   },
   "devDependencies": {
-    "jest": "^28.1.1"
+    "jest": "^28.1.2"
   },
   "files": [
     "dist"

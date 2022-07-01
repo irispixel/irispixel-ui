@@ -23,7 +23,4 @@ beforeEach(() => {
 
 test('renders a Combobox', () => {
   const { getByText } = render(Combobox);
-  // const button = getByText('World')
-
-  // expect(button).toBeInTheDocument()
 });

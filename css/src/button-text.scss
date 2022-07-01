@@ -2,7 +2,13 @@
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
-@import './shadow.scss';
+@import './_shadow.scss';
+@import './_button.scss';
+@import './_colors.scss';
+@import './_disabled.scss';
+@import './_display.scss';
+@import './_flex.scss';
+@import './_size.scss';
 
 // Text buttons
 .text-primary {
@@ -18,6 +24,7 @@
   outline: 1px solid theme_color('primary');
 }
 .hover-primary:focus {
+  outline: none;
   box-shadow: shadow('primary');
 }
 

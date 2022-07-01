@@ -14,11 +14,7 @@
   export let disabled = false;
   export let type = 'button';
 
-  function get_color_css(in_color: string) {
-    return 'flat-' + in_color;
-  }
-
-  $: color_css = get_color_css(color);
+  $: color_css = 'flat-' + color;
   $: size_css = get_size_css(size);
   $: radius_css = get_radius_css(radius);
   $: display_css = get_display_css(icon);
@@ -39,9 +35,5 @@
 </button>
 
 <style lang="scss">
-  @import '../../../../../css/src/colors.scss';
-  @import '../../../../../css/src/disabled.scss';
-  @import '../../../../../css/src/size.scss';
-  @import '../../../../../css/src/button.scss';
-  @import '../../../../../css/src/button-flat.scss';
+  @use '../../../../../css/src/button-flat.scss';
 </style>

@@ -1,0 +1,18 @@
+// Copyright (c) 2022 IrisPixel
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+@import './_borders.scss';
+@import './_colors.scss';
+@import './_shadow.scss';
+
+.entry:hover,
+.entry:focus {
+  background-color: lighten_theme_color('primary');
+}
+.ip-dropdown-list-item {
+  cursor: pointer;
+  // min-width: 100%;
+  padding: 1rem;
+}

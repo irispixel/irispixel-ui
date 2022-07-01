@@ -3,8 +3,11 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+@import '_disabled.scss';
+
 .ip-tabs-nav-root {
-  display: block;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
 }
 .ip-tabs-root {
@@ -13,4 +16,7 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+.ip-tabitem-root {
+  float: left;
 }

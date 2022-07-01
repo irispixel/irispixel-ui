@@ -6,8 +6,6 @@
 -->
 <script lang="ts">
   import Portal from '@irispixel/svelte-portal/Portal.svelte';
-  export let color = '';
-  export let name = 'modal-dialog';
   export let isOpen = false;
   export let zIndex = 1;
 

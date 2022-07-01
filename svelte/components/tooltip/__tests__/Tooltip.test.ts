@@ -14,16 +14,13 @@ beforeEach(() => {
   // IntersectionObserver isn't available in test environment
   const mockIntersectionObserver = jest.fn();
   mockIntersectionObserver.mockReturnValue({
-    observe: () => null,
-    unobserve: () => null,
-    disconnect: () => null
+    observe: () => jest.fn(),
+    unobserve: () => jest.fn(),
+    disconnect: () => jest.fn()
   });
   window.IntersectionObserver = mockIntersectionObserver;
 });
 
 test('renders a tooltip', () => {
   const { getByText } = render(Tooltip);
-  // const button = getByText('World')
-
-  // expect(button).toBeInTheDocument()
 });

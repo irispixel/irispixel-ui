@@ -1,3 +1,3 @@
-# Button
+# DropdownList
 
-Button component of svelte
+DropdownList component of svelte

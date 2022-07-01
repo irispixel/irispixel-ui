@@ -19,7 +19,7 @@ function set_theme(t: string) {
   localStorage.setItem(themeKey, t);
 }
 
-function remove_theme(t: string) {
+function remove_theme() {
   localStorage.removeItem(themeKey);
 }
 
@@ -43,9 +43,8 @@ function setDefaultBody() {
 function attachToBody(darkmode: boolean) {
   if (typeof window !== 'undefined') {
     console.log(`About to flip classes - darkmode ${darkmode}`);
-    darkmode
-      ? window.document.body.classList.add('dark')
-      : window.document.body.classList.remove('dark');
+    window.document.body.classList.add(darkmode ? 'dark' : 'light');
+    window.document.body.classList.remove(darkmode ? 'light' : 'dark');
   }
 }
 

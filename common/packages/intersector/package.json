@@ -1,6 +1,6 @@
 {
   "name": "@irispixel/common-intersector",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "entry": "src/index.ts",
   "main": "dist/index.cjs",
   "module": "dist/index.esm.mjs",
@@ -16,8 +16,8 @@
     "@babel/runtime": "^7.18.3"
   },
   "devDependencies": {
-    "@babel/runtime": "7.18.3",
-    "jest": "^28.1.1"
+    "@babel/runtime": "7.18.6",
+    "jest": "^28.1.2"
   },
   "scripts": {
     "clean": "rimraf dist && rimraf types",

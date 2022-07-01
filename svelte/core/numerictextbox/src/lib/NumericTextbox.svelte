@@ -6,12 +6,7 @@
 -->
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
-  import { get_color_class } from './numerictextbox-functions';
-
   let clazz = '';
-  export let color = '';
-  export let ariaLabel = '';
-  export let darkMode = false;
   export { clazz as class };
   export let min = 1;
   export let max = 200;
@@ -73,61 +68,15 @@
     {maxlength}
   />
   <span class="l-div-buttons">
-    <span class="l-numeric-textbox-button l-numeric-textbox-top" on:click={(e) => onIncrement()}
+    <span class="l-numeric-textbox-button l-numeric-textbox-top" on:click={(_) => onIncrement()}
       >^</span
     >
-    <span class="l-numeric-textbox-button l-numeric-textbox-bottom" on:click={(e) => onDecrement()}>
+    <span class="l-numeric-textbox-button l-numeric-textbox-bottom" on:click={(_) => onDecrement()}>
       -
     </span>
   </span>
 </div>
 
 <style lang="scss">
-  .l-numeric-textbox-root {
-    display: inline-flex;
-    align-items: center;
-    box-sizing: border-box;
-    outline: 1px solid var(--lp-primary);
-  }
-
-  .l-counter {
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    -moz-appearance: textfield; /* Firefox */
-
-    &:focus,
-    &:active {
-      outline: none;
-    }
-    vertical-align: middle;
-    box-sizing: border-box;
-    color: var(--lp-primary);
-    width: var(--lp-numeric-textbox-width, 100px);
-    font-size: var(--lp-numeric-textbox-font-size, 2rem);
-  }
-
-  .l-div-buttons {
-    float: right;
-    height: 100%;
-    box-sizing: border-box;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 2rem;
-  }
-  .l-numeric-textbox-button {
-    display: block;
-    cursor: pointer;
-    text-align: center;
-    height: var(--lp-numeric-textbox-btn-height, 25px);
-    outline: 0;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .l-numeric-textbox-top {
-  }
-  .l-numeric-textbox-bottom {
-  }
+  @use '../../../../../css/src/numerictextbox.scss';
 </style>

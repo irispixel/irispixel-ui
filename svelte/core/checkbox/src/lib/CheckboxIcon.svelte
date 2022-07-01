@@ -5,33 +5,26 @@
  https://opensource.org/licenses/MIT
 -->
 <script lang="ts">
-  import { getContext } from 'svelte';
-  import type { Writable } from 'svelte/store';
-  import { keyChecked, keyColor, keyDisabled, keyIndeterminate, keySize } from './Checkbox.svelte';
+  export let checked = false;
+  export let size = 'sm';
+  export let color = 'primary';
+  export let disabled = false;
+  export let indeterminate = false;
 
-  const checkedState: Writable<boolean> = getContext(keyChecked);
-  const szState: Writable<string> = getContext(keySize);
-  const disabledState: Writable<boolean> = getContext(keyDisabled);
-  const colorState: Writable<string> = getContext(keyColor);
-  const indeterminateState: Writable<boolean> = getContext(keyIndeterminate);
-
-  $: checked = $checkedState;
-  $: sz = $szState;
-  $: color = $colorState;
-  $: disabled = $disabledState;
-  $: indeterminate = $indeterminateState;
-
-  $: colorClass = indeterminate
-    ? 'indeterminate-' + color + '-checkbox'
-    : !checked
-    ? 'unchecked-color'
-    : color + '-checkbox';
+  $: colorClass = checked || indeterminate ? 'checked-' + color : 'unchecked';
   $: hoverClass = indeterminate || disabled ? '' : 'hover-checkbox-' + color;
-  $: szClass = 'sz-' + sz;
+  $: tickColorClass = indeterminate
+    ? 'tick-indeterminate'
+    : disabled
+    ? ''
+    : checked
+    ? 'tick-checked'
+    : '';
+  $: szClass = 'sz-' + size;
 </script>
 
-<span class="ip-checkbox-icon-root {szClass}">
-  <span class="default-checkbox-icon {hoverClass} {colorClass} {szClass}" />
+<span class="ip-checkbox-icon-root {szClass} {hoverClass} {colorClass}">
+  <span class="checkbox-tick {tickColorClass}" />
 </span>
 
 <style lang="scss">

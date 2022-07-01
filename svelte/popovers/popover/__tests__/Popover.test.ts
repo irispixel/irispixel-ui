@@ -8,7 +8,7 @@ import '@testing-library/jest-dom';
 
 import { render, fireEvent } from '@testing-library/svelte';
 import Popover from '$lib/Popover.svelte';
-import { HAlign, VAlign, CloseOnLeave } from '@irispixel/common-popover';
+import { CloseOnLeave } from '@irispixel/common-popover';
 
 beforeEach(() => {
   // IntersectionObserver isn't available in test environment
@@ -23,8 +23,4 @@ beforeEach(() => {
 
 test('renders a popover element', () => {
   const { getByText } = render(Popover);
-});
-
-test('renders a popover element with custom props', () => {
-  const { getByText } = render(Popover, { props: { hAlign: HAlign.Left } });
 });

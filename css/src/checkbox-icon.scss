@@ -7,47 +7,10 @@
 @import './shadow.scss';
 @import './checkbox-icon-common.scss';
 
-.default-checkbox-icon {
-  position: absolute;
-  user-select: none;
-  top: 0;
-  left: 0;
-  margin: calc(var(--ip-checkbox-dimension, $size_sm) * 0.05rem);
-  height: calc(var(--ip-checkbox-dimension, $size_sm) * 0.9rem);
-  width: calc(var(--ip-checkbox-dimension, $size_sm) * 0.9rem);
-}
-
-.default-checkbox-icon::after {
-  content: '';
-  user-select: none;
-  position: absolute;
-  display: block;
-
-  left: calc(var(--ip-checkbox-dimension, $size_sm) * 0.35rem);
-  top: calc(var(--ip-checkbox-dimension, $size_sm) * 0.2rem);
-  width: calc(var(--ip-checkbox-dimension, $size_sm) * 0.2rem);
-  height: calc(var(--ip-checkbox-dimension, $size_sm) * 0.35rem);
-  border: solid white;
-  border-width: 0 calc(var(--ip-checkbox-dimension) * 0.1rem)
-    calc(var(--ip-checkbox-dimension) * 0.1rem) 0;
-  transform: rotate(45deg);
-}
-
-// Colors
-.primary-checkbox {
-  background-color: theme_color('primary');
-}
-
-.secondary-checkbox {
-  background-color: theme_color('secondary');
-}
-
-.indeterminate-primary-checkbox {
-}
-
-.indeterminate-secondary-checkbox {
-}
-
-.unchecked-color {
-  background-color: #eee;
+.tick-indeterminate {
+  left: calc(var(--ip-checkbox-dimension, $size_sm) * 0.1rem);
+  top: calc(var(--ip-checkbox-dimension, $size_sm) * 0.45rem);
+  width: calc(var(--ip-checkbox-dimension, $size_sm) * 0.8rem);
+  height: calc(var(--ip-checkbox-dimension, $size_sm) * 0.1rem);
+  background-color: var(--ip-background-color);
 }

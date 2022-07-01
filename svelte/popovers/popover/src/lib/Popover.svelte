@@ -4,58 +4,61 @@
  This software is released under the MIT License.
  https://opensource.org/licenses/MIT
 -->
-<script lang="ts">
+<script lang="ts" context="module">
+  import Portal from '@irispixel/svelte-portal/Portal.svelte';
   import {
     TriggerEvent,
-    HAlign,
-    VAlign,
     CloseOnLeave,
     trigger,
-    getAlignmentCSS,
-    ElementRect
+    getElementRect,
+    zeroRect,
+    getEmptyStyles
   } from '@irispixel/common-popover';
+  import type { FnGetStyles } from '@irispixel/common-popover';
+  import { observe_with_options } from '@irispixel/common-intersector';
+</script>
 
-  import Portal from '@irispixel/svelte-portal/Portal.svelte';
-  import { observe, observe_with_options } from '@irispixel/common-intersector';
-
-  export let vAlign = VAlign.Top;
-  export let hAlign = HAlign.Left;
+<script lang="ts">
   export let triggerEvent = TriggerEvent.Hover;
   export let zIndex = 1;
   export let isOpen = false;
   export let closeOnLeave = CloseOnLeave.Target;
 
   // threshold represents the threshold parameter of IntersectionObserver.
-  export let threshold = 0.1;
+  export let threshold = 0.0;
 
   // closeTimeoutms indicates the closetimeout in milliseconds
   export let closeTimeoutms = 200;
 
+  export let fnGetStyles: FnGetStyles = getEmptyStyles;
+
   let insidePopover = false;
 
-  let elementRect = new ElementRect(0, 0, 0, 0);
-
+  // observe_config changes when the threshold changes
   $: observe_config = {
     root: null, // 'null' - default viewport  . default value
     rootMargin: '0px', // default value
     threshold: threshold
   };
 
-  $: styles = getAlignmentCSS({
-    elementRect: elementRect,
-    vAlign: vAlign,
-    hAlign: hAlign
-  });
+  let popoverRoot: HTMLElement;
 
-  function onShow(el: HTMLElement) {
+  let intersecting = false;
+
+  $: myElementRect = intersecting ? getElementRect(popoverRoot) : zeroRect;
+  // Compute the rectangle only if it is in the viewport. Otherwise don't bother recomputing it to save on the CPU cycles
+
+  $: styles = fnGetStyles(myElementRect);
+
+  function onShow() {
     isOpen = true;
   }
 
-  function onToggle(el: HTMLElement) {
+  function onToggle() {
     isOpen = !isOpen;
   }
 
-  function onTargetMouseLeave(e: MouseEvent) {
+  function onTargetMouseLeave() {
     if (closeOnLeave === CloseOnLeave.Target) {
       isOpen = false;
     } else {
@@ -67,13 +70,13 @@
     }
   }
 
-  function onPopoverMouseEnter(e: MouseEvent) {
+  function onPopoverMouseEnter() {
     if (triggerEvent === TriggerEvent.Hover) {
       insidePopover = true;
     }
   }
 
-  function onPopoverMouseLeave(e: MouseEvent) {
+  function onPopoverMouseLeave() {
     if (triggerEvent === TriggerEvent.Hover) {
       insidePopover = false;
       isOpen = false;
@@ -81,25 +84,20 @@
   }
 
   function onIntersect(e: CustomEvent) {
-    const target = e.target as HTMLElement;
-    elementRect = new ElementRect(
-      target.offsetLeft,
-      target.offsetTop,
-      target.offsetWidth,
-      target.offsetHeight
-    );
-    styles = getAlignmentCSS({ elementRect: elementRect, vAlign: vAlign, hAlign: hAlign });
+    const entry = e.detail.entry;
+    intersecting = entry.isIntersecting;
   }
 </script>
 
 <div
   class="ip-popover-root"
+  bind:this={popoverRoot}
   use:observe_with_options={observe_config}
-  on:intersect={onIntersect}
+  on:intersect={(e) => onIntersect(e)}
   use:trigger={triggerEvent}
-  on:showpopover={onShow}
-  on:togglepopover={onToggle}
-  on:mouseleave={onTargetMouseLeave}
+  on:showpopover={() => onShow()}
+  on:togglepopover={() => onToggle()}
+  on:mouseleave={() => onTargetMouseLeave()}
 >
   <slot name="target">
     <span>Target Not Specified</span>
@@ -113,8 +111,8 @@
   on:click
   on:mouseover
   on:mousemove
-  on:mouseenter={onPopoverMouseEnter}
-  on:mouseleave={onPopoverMouseLeave}
+  on:mouseenter={() => onPopoverMouseEnter()}
+  on:mouseleave={() => onPopoverMouseLeave()}
   on:mouseup
   on:mousedown
   on:mousewheel

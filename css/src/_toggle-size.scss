@@ -1,0 +1,21 @@
+// Copyright (c) 2022 IrisPixel
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+// Sizes of toggle
+.xs-toggle {
+  --ip-toggle-border-radius: 1; //rem
+}
+.sm-toggle {
+  --ip-toggle-border-radius: 2; //rem
+}
+.md-toggle {
+  --ip-toggle-border-radius: 3; //rem
+}
+.lg-toggle {
+  --ip-toggle-border-radius: 4; //rem
+}
+.xl-toggle {
+  --ip-toggle-border-radius: 5; //rem
+}

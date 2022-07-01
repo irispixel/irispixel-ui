@@ -5,29 +5,36 @@
  https://opensource.org/licenses/MIT
 -->
 <script lang="ts">
-  import { get_color_class } from './tooltip-functions';
   import Popover from '@irispixel/svelte-popover/Popover.svelte';
-  import { HAlign, VAlign, CloseOnLeave, TriggerEvent } from '@irispixel/common-popover';
+  import {
+    CloseOnLeave,
+    TriggerEvent,
+    getPopoverStyles,
+    PopoverPosition
+  } from '@irispixel/common-popover';
 
-  export let outline = false;
   export let color = '';
   export let ariaLabel = '';
-  export let darkMode = false;
   export let zIndex = 2;
   export let isOpen = false;
   export let triggerEvent = TriggerEvent.Hover;
-  export let vAlign = VAlign.Bottom;
-  export let hAlign = HAlign.Left;
+  export let position = PopoverPosition.BottomRight;
   export let message = 'Tooltip Message';
   export let closeOnLeave = CloseOnLeave.Target;
 
   let clazz = '';
   export { clazz as class };
 
-  $: themeClass = get_color_class(color, outline, darkMode);
+  $: themeClass = ''; // get_color_class(color, outline, darkMode);
 </script>
 
-<Popover {zIndex} {triggerEvent} bind:isOpen {vAlign} {hAlign} {closeOnLeave}>
+<Popover
+  {zIndex}
+  {triggerEvent}
+  bind:isOpen
+  fnGetStyles={getPopoverStyles(position)}
+  {closeOnLeave}
+>
   <div slot="target">
     <slot />
   </div>

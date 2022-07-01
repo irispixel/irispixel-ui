@@ -35,9 +35,5 @@
 </button>
 
 <style lang="scss">
-  @import '../../../../../css/src/colors.scss';
-  @import '../../../../../css/src/disabled.scss';
-  @import '../../../../../css/src/size.scss';
-  @import '../../../../../css/src/button.scss';
-  @import '../../../../../css/src/button-text.scss';
+  @use '../../../../../css/src/button-text.scss';
 </style>

@@ -9,7 +9,4 @@ import MockCheckboxItem from './MockCheckboxItem.svelte';
 
 test('renders a CheckboxItem', () => {
   const { getByText } = render(MockCheckboxItem);
-  // const button = getByText('World')
-
-  // expect(button).toBeInTheDocument()
 });

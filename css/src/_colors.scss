@@ -1,0 +1,124 @@
+// Copyright (c) 2022 IrisPixel
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+@use 'sass:color';
+
+$primary-h: 200;
+$primary-s: 96%;
+$primary-l: 50%;
+
+$primary-text-h: 200;
+$primary-text-s: 96%;
+$primary-text-l: 100%;
+
+$secondary-text-h: 200;
+$secondary-text-s: 96%;
+$secondary-text-l: 100%;
+
+$primary-darken: 10%;
+$primary-lighten: 20%;
+
+$secondary-darken: 10%;
+$secondary-lighten: 20%;
+
+@function text_color($color-name) {
+  @if $color-name == 'primary' {
+    @return hsla(
+      var(--ip-primary-text-h, $primary-text-h),
+      var(--ip-primary-text-s, $primary-text-s),
+      var(--ip-primary-text-l, $primary-text-l),
+      1
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsla(
+      var(--ip-secondary-text-h, $secondary-text-h),
+      var(--ip-secondary-text-s, $secondary-text-s),
+      var(--ip-secondary-text-l, $secondary-text-l),
+      1
+    );
+  } @else {
+    @error "text_color: Invalid color #{$color-name}";
+  }
+}
+
+@function theme_color($color-name) {
+  @if $color-name == 'primary' {
+    @return hsla(
+      var(--ip-primary-h, $primary-h),
+      var(--ip-primary-s, $primary-s),
+      var(--ip-primary-l, $primary-l),
+      1
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsla(
+      var(--ip-secondary-h, calc(var(--ip-primary-h, $primary-h) + 180)),
+      var(--ip-secondary-s, var(--ip-primary-s, $primary-s)),
+      var(--ip-secondary-l, var(--ip-primary-l, $primary-l)),
+      1
+    );
+  } @else {
+    @error "theme_color: Invalid color #{$color-name}";
+  }
+}
+
+@function darken_theme_color($color-name) {
+  @if $color-name == 'primary' {
+    @return hsl(
+      var(--ip-primary-h, $primary-h),
+      var(--ip-primary-s, $primary-s),
+      calc(var(--ip-primary-l, $primary-l) - var(--ip-primary-darken, $primary-darken))
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsl(
+      calc(var(--ip-secondary-h, $primary-h) + 180),
+      var(--ip-secondary-s, $primary-s),
+      calc(var(--ip-secondary-l, $primary-l) - var(--ip-secondary-darken, $primary-darken))
+    );
+  } @else {
+    @error "darken_theme_color: Invalid color #{$color-name}";
+  }
+}
+
+@function lighten_theme_color($color-name) {
+  @if $color-name == 'primary' {
+    @return hsl(
+      var(--ip-primary-h, $primary-h),
+      var(--ip-primary-s, $primary-s),
+      calc(var(--ip-primary-l, $primary-l) + var(--ip-primary-lighten, $primary-lighten))
+    );
+  } @else if ($color-name == 'secondary') {
+    @return hsl(
+      calc(var(--ip-secondary-h, $primary-h) + 180),
+      var(--ip-secondary-s, $primary-s),
+      calc(var(--ip-secondary-l, $primary-l) + var(--ip-secondary-lighten, $secondary-lighten))
+    );
+  } @else {
+    @error "lighten_theme_color: Invalid color #{$color-name}";
+  }
+}
+
+.primary {
+  color: theme_color('primary');
+}
+
+.bg-primary {
+  background-color: theme_color('primary');
+}
+
+.border-primary {
+  border-color: theme_color('primary');
+}
+
+.secondary {
+  color: theme_color('secondary');
+}
+
+.bg-secondary {
+  background-color: theme_color('secondary');
+}
+
+.border-secondary {
+  border-color: theme_color('secondary');
+}

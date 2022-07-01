@@ -1,0 +1,15 @@
+// Copyright (c) 2022 IrisPixel
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+@import './colors.scss';
+
+// android toggle
+.android-toggle {
+  border-radius: calc(var(--ip-toggle-border-radius, $border-radius) * 1rem);
+}
+
+.android-toggle-icon {
+  border-radius: 50%;
+}

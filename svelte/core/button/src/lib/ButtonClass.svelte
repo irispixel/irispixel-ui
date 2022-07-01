@@ -16,6 +16,6 @@
   }
 
   export function get_display_css(icon: typeof SvelteComponent | undefined) {
-    return icon === undefined ? 'block-button' : 'flex-button';
+    return icon === undefined ? 'inline-block' : 'inline-flex align-center';
   }
 </script>

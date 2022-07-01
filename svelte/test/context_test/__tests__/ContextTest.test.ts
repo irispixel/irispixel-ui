@@ -6,13 +6,11 @@
 // NOTE: jest-dom adds handy assertions to Jest and it is recommended, but not required.
 import '@testing-library/jest-dom';
 
-import { render, fireEvent } from '@testing-library/svelte';
-import Box from './Box.svelte';
+import { render } from '@testing-library/svelte';
+import SampleComponent from './SampleComponent.svelte';
 import ContextTest from '$lib/ContextTest.svelte';
 
-test('renders a ContextTest', () => {
-  const { getByText } = render(ContextTest, { props: { component: Box } });
-  // const button = getByText('World')
-
-  // expect(button).toBeInTheDocument()
+test('renders a SampleComponent using ContextTest', () => {
+  const { getByText } = render(ContextTest, { props: { component: SampleComponent } });
+  expect(getByText('sample')).toBeInTheDocument();
 });

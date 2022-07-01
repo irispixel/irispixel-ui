@@ -5,122 +5,90 @@
  https://opensource.org/licenses/MIT
 -->
 <script lang="ts" context="module">
-  export interface DropdownItem {
-    id: string;
-  }
-
-  export function isArrayOfStrings(obj: any): boolean {
-    return Array.isArray(obj) && obj.every((item) => typeof item === 'string');
-  }
-
-  export function isADropdownItem(obj: any): obj is DropdownItem {
-    return 'id' in obj;
-  }
-
-  export function isAnArrayofDropdownItems(obj: any): obj is DropdownItem {
-    return Array.isArray(obj) && obj.every((item) => isADropdownItem(item));
-  }
-
-  export function validate(items: Array<any>) {
-    if (items) {
-      if (!Array.isArray(items)) {
-        throw new Error(`Dropdown 'items' prop should be an array - ${typeof items}`);
-      }
-      if (isArrayOfStrings(items) || isAnArrayofDropdownItems(items)) {
-        // Very good. Either an array of string or an array of DropdownItems
-      } else {
-        throw new Error(
-          `Dropdown 'items' prop should be an array of strings or an array of 'DropdownItems's - ${typeof items}`
-        );
-      }
-    }
-  }
 </script>
 
 <script lang="ts">
   import Popover from '@irispixel/svelte-popover/Popover.svelte';
-  import { CloseOnLeave, HAlign, VAlign, TriggerEvent } from '@irispixel/common-popover';
-  import Button from '@irispixel/svelte-button/Button.svelte';
+  import { CloseOnLeave, TriggerEvent } from '@irispixel/common-popover';
+  import {
+    DropdownListPosition,
+    isArrayOfStrings,
+    isAnArrayofDropdownItems,
+    validate,
+    getDropdownListStyles
+  } from '@irispixel/common-dropdown';
+  import type { DropdownItem } from '@irispixel/common-dropdown';
+  import DropdownListItem from './DropdownListItem.svelte';
 
-  export let selected = '';
-  export let outline = false;
-  let clazz = '';
+  export let selected: string | DropdownItem | null = null;
   export let color = 'primary';
-  export let ariaLabel = '';
   export let zIndex = 1;
   export let isOpen = false;
-  export let vAlign = VAlign.Bottom;
-  export let hAlign = HAlign.Left;
-  export let items: Array<any> = [];
+  export let width = '200px';
+  export let items: Array<string> | Array<DropdownItem> = [];
   export let triggerEvent = TriggerEvent.Hover;
   export let content = '';
+  export let placeholder = '';
+
+  $: finalPlaceholder = placeholder && placeholder.length > 0 ? placeholder : 'Select ..';
+
   let closeOnLeave = CloseOnLeave.Popover;
-  export { clazz as class };
+  export let position = DropdownListPosition.Bottom;
 
   $: validate(items);
-  let styles = '';
 
-  let classes: Array<string> = [];
-
-  let localClass = classes.join(' ');
-
-  function onSelect(id: string) {
-    console.log(`onSelect`);
+  function onSelect(id: string | DropdownItem) {
     selected = id;
   }
 </script>
 
-<Popover {zIndex} {triggerEvent} bind:isOpen {vAlign} {hAlign} {closeOnLeave}>
-  <div slot="target" class="ip-dropdown-input-root">
-    <span class="ip-dropdown-list-selected" />
-    <Button type="button" variant="text" {color}>{content}</Button>
+<Popover
+  {zIndex}
+  {triggerEvent}
+  bind:isOpen
+  {closeOnLeave}
+  fnGetStyles={getDropdownListStyles(position)}
+>
+  <div slot="target" class="ip-dropdown-target-root" style="width: {width};">
+    <span>
+      <slot name="item">
+        {#if selected}
+          <DropdownListItem item={selected} disableHover={true} />
+        {:else}
+          <DropdownListItem item={finalPlaceholder} disableHover={true} />
+        {/if}
+      </slot>
+    </span>
   </div>
-  <div slot="popover" class="ip-dropdown-list-container">
+  <div slot="popover">
     {#if items && Array.isArray(items)}
-      {#if isArrayOfStrings(items)}
-        <ul class="ip-dropdown-list-root">
-          {#each items as item, i}
-            <li class="ip-dropdown-list-item" on:click={onSelect(item)}>
-              <slot {item} id={item} />
+      <ul class="ip-dropdown-list-root">
+        {#if isArrayOfStrings(items)}
+          {#each items as item, _}
+            <li on:click={() => onSelect(item)}>
+              <slot {item}>
+                <DropdownListItem {item} />
+              </slot>
             </li>
           {/each}
-        </ul>
-      {:else if isAnArrayofDropdownItems(items)}
-        <ul class="ip-dropdown-list-root">
-          {#each items as item, i}
-            <li class="ip-dropdown-list-item" on:click={onSelect(item.id)}>
-              <slot {item} id={item.id} />
+        {:else if isAnArrayofDropdownItems(items)}
+          {#each items as item, _}
+            <li on:click={() => onSelect(item)}>
+              <slot name="item">
+                <DropdownListItem {item} />
+              </slot>
             </li>
           {/each}
-        </ul>
-      {/if}
+        {/if}
+      </ul>
     {/if}
   </div>
 </Popover>
 
 <style lang="scss">
-  @import '../../../../../css/src/colors.scss';
+  @use '../../../../../css/src/dropdown.scss';
 
-  .ip-dropdown-input-root {
-    cursor: pointer;
-    outline: none;
-    display: inline-block;
-  }
-  .ip-dropdown-list-container {
-    display: inline-block;
-  }
-  .ip-dropdown-list-root {
-    list-style-type: none;
-    margin: 0;
-    background-color: transparent;
-    color: inherit;
-    padding: 0;
-  }
-  .ip-dropdown-list-item {
-    cursor: pointer;
-  }
-  .ip-dropdown-list-item:hover,
-  .ip-dropdown-list-item:focus {
-    background-color: darken_theme_color('primary');
+  .entry {
+    border: 1px solid green;
   }
 </style>

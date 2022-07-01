@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { onMount } from 'svelte';
-import { infer_theme, Dark, Light, setDefaultBody, set_theme_preload } from './infer-theme';
+import { infer_theme, Dark, setDefaultBody, set_theme_preload } from './infer-theme';
 import { darkThemeStore, triggerThemeStore } from './themestore';
 
 setDefaultBody();
@@ -36,8 +36,9 @@ onMount(() => {
         } else {
             darkmode = (theme === 'dark');
         }
-        if (darkmode && window) {
-            window.document.body.classList.add('dark');
+        if (window) {
+            window.document.body.classList.remove(darkmode ? 'light': 'dark');
+            window.document.body.classList.add(darkmode ? 'dark': 'light');
         }
         if (window) {
             window.document.body.classList.remove('ip-hide');

@@ -6,8 +6,10 @@
 -->
 <script lang="ts" context="module">
   export type KeyValue = {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     key: any;
     value: any;
+    /* eslint-enable @typescript-eslint/no-explicit-any */
   };
 </script>
 

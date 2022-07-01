@@ -3,50 +3,60 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-@import './colors.scss';
-@import './shadow.scss';
-
-$size_sm: 2; // rem
-
-.checkbox-text {
-  position: absolute;
-  // padding-left: calc(var(--ip-checkbox-dimension, $size_sm) * 0.5rem);
-}
+@import './_colors.scss';
+@import './checkbox-size.scss';
 
 .ip-checkbox-icon-root {
   display: inline-block;
   position: relative;
   width: calc(var(--ip-checkbox-dimension, $size_sm) * 1rem);
   height: calc(var(--ip-checkbox-dimension, $size_sm) * 1rem);
+  margin: 0px 5px;
+  user-select: none;
+  border: 1px solid var(--ip-color, black);
 }
 
-// Sizes
-.sz-xs {
-  --ip-checkbox-dimension: 1.5; // rem
+.checked-primary {
+  background-color: theme_color('primary');
+  border-color: theme_color('primary');
 }
 
-.sz-sm {
-  --ip-checkbox-dimension: 2; // rem
+.checked-secondary {
+  background-color: theme_color('secondary');
+  border-color: theme_color('secondary');
 }
 
-.sz-md {
-  --ip-checkbox-dimension: 3; // rem
-}
-
-.sz-lg {
-  --ip-checkbox-dimension: 4; // rem
-}
-
-.sz-xl {
-  --ip-checkbox-dimension: 5; // rem
-}
-
-.hover-checkbox-primary:hover,
+.hover-checkbox-primary:active,
 .hover-checkbox-primary:focus {
-  box-shadow: shadow('primary');
+  outline: 4px solid lighten_theme_color('primary');
+  background-color: theme_color('primary');
 }
 
-.hover-checkbox-secondary:hover,
+.hover-checkbox-secondary:active,
 .hover-checkbox-secondary:focus {
-  box-shadow: shadow('secondary');
+  outline: 4px solid lighten_theme_color('secondary');
+  background-color: theme_color('secondary');
+}
+
+.checkbox-tick {
+  content: '';
+  user-select: none;
+  position: absolute;
+  display: block;
+}
+
+.unchecked {
+  background-color: transparent;
+}
+
+.tick-checked {
+  left: calc(var(--ip-checkbox-dimension, $size_sm) * 0.35rem);
+  top: calc(var(--ip-checkbox-dimension, $size_sm) * 0.2rem);
+  width: calc(var(--ip-checkbox-dimension, $size_sm) * 0.2rem);
+  height: calc(var(--ip-checkbox-dimension, $size_sm) * 0.35rem);
+  border: solid transparent;
+  border-width: 0 calc(var(--ip-checkbox-dimension) * 0.1rem)
+    calc(var(--ip-checkbox-dimension) * 0.1rem) 0;
+  transform: rotate(45deg);
+  border-color: var(--ip-background-color);
 }

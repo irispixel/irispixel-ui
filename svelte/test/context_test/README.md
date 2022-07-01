@@ -8,22 +8,22 @@ package.json
 
 ```json
   "devDependencies": {
-    "@irispixel/svelte-context-test": "^0.1.6",
+    "@irispixel/svelte-context-test": "^0.1.8",
   }
 ```
+
 ## Problem Statement
 
 svelte framework provides and recommends `Context`s to share data between the parent and child components, .
 
 This library helps to test Svelte Child Components that expect context values to be passed from a parent component.
 
-
 ## Example
 
 Assume 2 components - Parent and Child, that share data between each other through `Context`s , as below.
 
-
 `Child.svelte`
+
 ```svelte
 <script lang="ts">
   import { getContext } from 'svelte';
@@ -31,11 +31,14 @@ Assume 2 components - Parent and Child, that share data between each other throu
 
   const groupStore: Writable<string> = getContext('ctx-key');
 </script>
+
 {$groupStore}
 ```
+
 The Child component expects context data through a key - `ctx-key` as mentioned above.
 
 `Parent.svelte`
+
 ```svelte
 <script lang="ts">
   import { setContext } from 'svelte';
@@ -46,6 +49,7 @@ The Child component expects context data through a key - `ctx-key` as mentioned 
 
   setContext('ctx-key', groupStore);
 </script>
+
 <Child />
 ```
 
@@ -55,8 +59,7 @@ To test the child component `Child.svelte` above (using jest or any other framew
 
 Trying to instantiate the child component directly through the `render` from `testing-library/svelte` will work, but not very useful since we cannot set the value of the context key `ctx-key` expected in the `Child` component.
 
-
-`Child-notuseful.test.ts` 
+`Child-notuseful.test.ts`
 
 ```typescript
 import { render, fireEvent } from '@testing-library/svelte';
@@ -65,7 +68,7 @@ import Child from './Child.svelte';
 
 test('renders the Child component', () => {
   const { getByText } = render(Child);
-  // This will programmatically compile but useless 
+  // This will programmatically compile but useless
   // since we cannot set the context key of 'ctx-key' to be tested better
 });
 ```
@@ -80,10 +83,9 @@ package.json
 
 ```json
   "devDependencies": {
-    "@irispixel/svelte-context-test": "^0.1.6",
+    "@irispixel/svelte-context-test": "^0.1.8",
   }
 ```
-
 
 Create a mixin helper component of `Child.svelte` as below, say `MockChild.svelte` that helps us set the context key attribute values, as below.
 

@@ -1,0 +1,18 @@
+// Copyright (c) 2022 IrisPixel
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+@import './colors.scss';
+
+$inner-ratio: 0.8;
+$border-radius: 2.25; //rem
+
+// Variants
+.ios-toggle {
+  border-radius: calc(var(--ip-toggle-border-radius, $border-radius) * 1rem);
+}
+
+.ios-toggle-icon {
+  border-radius: 50%;
+}

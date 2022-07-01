@@ -1,3 +1,3 @@
-# Button
+# Badge
 
-Button component of svelte
+Badge component of svelte
